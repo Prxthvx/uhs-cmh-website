@@ -21,26 +21,28 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative h-[70vh] min-h-[480px] overflow-hidden flex items-center justify-center">
+    <section className="relative h-[70vh] min-h-[480px] flex items-center justify-center">
       {/* Background slideshow */}
-      <AnimatePresence mode="popLayout">
-        <motion.img
-          key={current}
-          src={images[current]}
-          alt=""
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      </AnimatePresence>
+      <div className="absolute inset-0 overflow-hidden">
+        <AnimatePresence mode="popLayout">
+          <motion.img
+            key={current}
+            src={images[current]}
+            alt=""
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </AnimatePresence>
 
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-foreground/50" />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-foreground/50" />
+      </div>
 
-      {/* Bottom gradient fade to white for seamless transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background via-background/80 to-transparent" />
+      {/* Bottom gradient fade — extends beyond the section for seamless blend */}
+      <div className="absolute -bottom-px left-0 right-0 h-48 bg-gradient-to-t from-background via-background/70 to-transparent z-[1]" />
 
       {/* Content */}
       <div className="relative z-10 container text-center max-w-2xl mx-auto px-6">
