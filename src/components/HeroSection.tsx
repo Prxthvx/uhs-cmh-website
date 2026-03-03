@@ -5,8 +5,10 @@ import { useState, useEffect } from "react";
 import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.jpg";
 import hero3 from "@/assets/hero-3.jpg";
+import hero4 from "@/assets/hero-4.jpg";
+import hero5 from "@/assets/hero-5.jpg";
 
-const images = [hero1, hero2, hero3];
+const images = [hero1, hero2, hero3, hero4, hero5];
 
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
@@ -36,6 +38,9 @@ const HeroSection = () => {
 
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-foreground/50" />
+
+      {/* Bottom gradient fade to white for seamless transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 container text-center max-w-2xl mx-auto px-6">
