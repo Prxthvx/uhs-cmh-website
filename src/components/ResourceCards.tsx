@@ -26,7 +26,7 @@ const features = [
 
 const ResourceCards = () => {
   return (
-    <section id="resources" className="pt-12 pb-16 md:pt-16 md:pb-24 bg-secondary">
+    <section id="resources" className="-mt-px pt-8 pb-16 md:pt-10 md:pb-24 bg-secondary">
       <div className="container">
         <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-12">
           Resources & Guides
