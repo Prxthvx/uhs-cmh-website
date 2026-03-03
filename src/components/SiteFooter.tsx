@@ -7,7 +7,7 @@ const SiteFooter = () => {
             <div className="h-6 w-6 rounded bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-xs">M</span>
             </div>
-            <span className="font-medium text-sm text-foreground">MaternaHealth</span>
+            <span className="font-medium text-sm text-foreground">MaternalHealth</span>
           </div>
           <div className="flex gap-6">
             <a href="#" className="text-xs text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a>
