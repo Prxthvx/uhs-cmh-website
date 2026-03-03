@@ -33,8 +33,8 @@ const HeroSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+            className="absolute inset-0 w-full h-full object-cover" />
+          
         </AnimatePresence>
 
         {/* Single combined overlay: dark on top, fading to secondary green at the very bottom */}
@@ -47,24 +47,24 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-5xl font-bold text-primary-foreground leading-tight tracking-tight"
-        >
+          className="text-3xl md:text-5xl font-bold text-primary-foreground leading-tight tracking-tight">
+          
           Your Trusted Maternal Health Resource
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-5 text-base md:text-lg text-primary-foreground/85 leading-relaxed"
-        >
-          Expert guidance and essential resources for every stage of your maternal journey — from your care team to you.
+          className="mt-5 text-base md:text-lg text-primary-foreground/85 leading-relaxed">
+          Expert guidance and essential resources for every stage of your maternal journey 
+
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-8"
-        >
+          className="mt-8">
+          
           <Button size="lg" className="px-8 py-3 text-base font-medium rounded-lg">
             Explore Resources
           </Button>
@@ -72,20 +72,20 @@ const HeroSection = () => {
 
         {/* Slide indicators */}
         <div className="flex justify-center gap-2 mt-10">
-          {images.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === current ? "w-8 bg-primary-foreground" : "w-3 bg-primary-foreground/40"
-              }`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
+          {images.map((_, i) =>
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+            i === current ? "w-8 bg-primary-foreground" : "w-3 bg-primary-foreground/40"}`
+            }
+            aria-label={`Go to slide ${i + 1}`} />
+
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;
