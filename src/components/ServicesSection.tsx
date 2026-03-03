@@ -43,7 +43,7 @@ const ServicesSection = () => {
             </div>
             <div>
               <h3 className="font-semibold text-foreground mb-2">Community Programs</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">Join peer support groups, attend prenatal classes, and connect with other mothers in your community.
+              <p className="text-sm text-muted-foreground leading-relaxed">Join peer support groups, and connect with other mothers in your community.
 
               </p>
             </div>
