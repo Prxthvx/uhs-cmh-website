@@ -18,7 +18,7 @@ const SiteHeader = () => {
           <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
             <span className="text-primary-foreground font-bold text-sm">M</span>
           </div>
-          <span className="font-semibold text-lg text-foreground">MaternaHealth</span>
+          <span className="font-semibold text-lg text-foreground">MaternalHealth</span>
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
