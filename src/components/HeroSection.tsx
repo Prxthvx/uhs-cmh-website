@@ -1,15 +1,49 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+
+import hero1 from "@/assets/hero-1.jpg";
+import hero2 from "@/assets/hero-2.jpg";
+import hero3 from "@/assets/hero-3.jpg";
+
+const images = [hero1, hero2, hero3];
 
 const HeroSection = () => {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="bg-background py-20 md:py-32">
-      <div className="container text-center max-w-2xl mx-auto">
+    <section className="relative h-[70vh] min-h-[480px] overflow-hidden flex items-center justify-center">
+      {/* Background slideshow */}
+      <AnimatePresence mode="popLayout">
+        <motion.img
+          key={current}
+          src={images[current]}
+          alt=""
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </AnimatePresence>
+
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-foreground/50" />
+
+      {/* Content */}
+      <div className="relative z-10 container text-center max-w-2xl mx-auto px-6">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-5xl font-bold text-foreground leading-tight tracking-tight"
+          className="text-3xl md:text-5xl font-bold text-primary-foreground leading-tight tracking-tight"
         >
           Your Trusted Maternal Health Resource
         </motion.h1>
@@ -17,7 +51,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed"
+          className="mt-5 text-base md:text-lg text-primary-foreground/85 leading-relaxed"
         >
           Expert guidance and essential resources for every stage of your maternal journey — from your care team to you.
         </motion.p>
@@ -31,6 +65,20 @@ const HeroSection = () => {
             Explore Resources
           </Button>
         </motion.div>
+
+        {/* Slide indicators */}
+        <div className="flex justify-center gap-2 mt-10">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === current ? "w-8 bg-primary-foreground" : "w-3 bg-primary-foreground/40"
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
