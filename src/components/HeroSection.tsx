@@ -38,7 +38,7 @@ const HeroSection = () => {
         </AnimatePresence>
 
         {/* Single combined overlay: dark on top, fading to secondary green at the very bottom */}
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/50 via-70% to-secondary z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/46 via-foreground/46 via-90 to-secondary/25 z-[1]" />
       </div>
 
       {/* Content */}
