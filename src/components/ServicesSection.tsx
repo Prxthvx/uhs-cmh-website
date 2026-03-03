@@ -25,8 +25,8 @@ const ServicesSection = () => {
             </div>
             <div>
               <h3 className="font-semibold text-foreground mb-2">Clinical Support</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Access to scheduled consultations, lab result tracking, and direct communication with your assigned care team.
+              <p className="text-sm text-muted-foreground leading-relaxed">Access to scheduled consultations, and direct communication with your assigned care team.
+
               </p>
             </div>
           </motion.div>
