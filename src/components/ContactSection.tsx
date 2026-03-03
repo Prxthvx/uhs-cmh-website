@@ -17,7 +17,7 @@ const ContactSection = () => {
             </div>
             <div>
               <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Open 24hrs</p>
-              <p className="text-sm text-foreground">Mon – Fri: 8:00 AM – 5:00 PM<br />Sat: 9:00 AM – 1:00 PM</p>
+              <p className="text-sm text-foreground">Open24rs<br />Sat: 9:00 AM – 1:00 PM</p>
             </div>
             <div>
               <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Phone</p>
@@ -25,7 +25,7 @@ const ContactSection = () => {
             </div>
             <div>
               <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Email</p>
-              <p className="text-sm text-foreground">care@maternahealth.org</p>
+              <p className="text-sm text-foreground">@</p>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
