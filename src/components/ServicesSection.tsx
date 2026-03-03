@@ -5,7 +5,7 @@ const ServicesSection = () => {
   return (
     <section id="services" className="py-16 md:py-24 bg-secondary">
       <div className="container">
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-4">UHS My Chart
+        <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-4">Our Services
 
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-lg mx-auto">
