@@ -40,7 +40,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-foreground/50" />
 
       {/* Bottom gradient fade to white for seamless transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/60 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background via-background/80 to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 container text-center max-w-2xl mx-auto px-6">
