@@ -12,10 +12,11 @@ const ContactSection = () => {
           <div className="grid sm:grid-cols-2 gap-6 mb-8">
             <div>
               <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Address</p>
-              <p className="text-sm text-foreground">123 Health Avenue, Suite 400<br />Medical District, MD 20000</p>
+              <p className="text-sm text-foreground">179 N Broad St, Norwich, NY 13815
+                <br />Medical District, MD 20000</p>
             </div>
             <div>
-              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Hours</p>
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Open 24hrs</p>
               <p className="text-sm text-foreground">Mon – Fri: 8:00 AM – 5:00 PM<br />Sat: 9:00 AM – 1:00 PM</p>
             </div>
             <div>
@@ -39,8 +40,7 @@ const ContactSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
 };
 
 export default ContactSection;
