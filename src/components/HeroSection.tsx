@@ -37,12 +37,9 @@ const HeroSection = () => {
           />
         </AnimatePresence>
 
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-foreground/50" />
+        {/* Single combined overlay: dark on top, fading to secondary green at the very bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/50 via-70% to-secondary z-[1]" />
       </div>
-
-      {/* Bottom gradient fade — extends beyond the section for seamless blend */}
-      <div className="absolute -bottom-px left-0 right-0 h-48 bg-gradient-to-t from-background via-background/70 to-transparent z-[1]" />
 
       {/* Content */}
       <div className="relative z-10 container text-center max-w-2xl mx-auto px-6">
