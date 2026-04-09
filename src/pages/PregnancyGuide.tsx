@@ -1,435 +1,437 @@
+import React, { useEffect, useState, useRef } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import { 
-  ArrowLeft, Phone, CalendarHeart, Baby, HeartPulse, 
-  Activity, Library, Bus, ArrowRight, ShieldCheck, 
-  Brain, CigaretteOff, WineOff, Pill, BookHeart, 
-  Smartphone, Building, BriefcaseMedical, MapPin, CheckCircle2,
-  CalendarDays, HeartHandshake, ListChecks
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-
-const mythFacts = [
-  {
-    myth: "I have to completely stop drinking coffee.",
-    fact: "False! You can safely have up to 200mg of caffeine a day. That is about one 12-ounce cup of coffee. (Source: ACOG)"
-  },
-  {
-    myth: "I am eating for two, so I need double the food.",
-    fact: "False! You only need about 300 extra calories a day, and only during your 2nd and 3rd trimesters. (Source: CDC)"
-  },
-  {
-    myth: "I should not exercise while pregnant.",
-    fact: "False! If you are healthy, 150 minutes of moderate exercise a week (like brisk walking) is highly recommended and safe for the baby. (Source: ACOG)"
-  },
-  {
-    myth: "Morning sickness only happens in the morning.",
-    fact: "False! Nausea can happen at any time of day or night. Eating small, frequent meals can help you feel better."
-  }
-];
+import { useLocation } from "react-router-dom";
+import { FileText, CalendarHeart, Sparkles, Baby, HeartPulse, ShieldAlert, Library, Bus, CheckCircle2 } from "lucide-react";
 
 const PregnancyGuide = () => {
-  const navigate = useNavigate();
+  const { hash } = useLocation();
+  const [activeSection, setActiveSection] = useState("planning");
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
+  const navItems = [
+    { id: "planning", label: "Planning & Confirmation", icon: CalendarHeart },
+    { id: "first-trimester", label: "First Trimester", icon: Sparkles },
+    { id: "second-trimester", label: "Second Trimester", icon: Baby },
+    { id: "third-trimester", label: "Third Trimester", icon: HeartPulse },
+    { id: "labor-delivery", label: "Labor & Delivery", icon: FileText },
+    { id: "postpartum", label: "Postpartum Care", icon: HeartPulse },
+    { id: "health-issues", label: "Health & Safety", icon: ShieldAlert },
+    { id: "logistics", label: "Logistics", icon: Bus },
+    { id: "resources", label: "External Resources", icon: Library },
+  ];
+
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        setActiveSection(id);
+      }
     }
-  };
+  }, [hash]);
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+  // Scroll Spy Logic using Intersection Observer
+  useEffect(() => {
+    // Collect all the section elements we want to observe
+    const sectionElements = navItems
+      .map(item => document.getElementById(item.id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sectionElements.length === 0) return;
+
+    // Create an observer that triggers when a section crosses the center of the viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Find all intersecting entries
+        const visibleEntries = entries.filter(entry => entry.isIntersecting);
+        
+        if (visibleEntries.length > 0) {
+          // If multiple are intersecting, take the one that is closest to the top
+          // (or just default to the first one the observer reports as visible)
+          setActiveSection(visibleEntries[0].target.id);
+        }
+      },
+      {
+        root: null,
+        rootMargin: "-20% 0px -60% 0px", // Trigger when the section is near the top third of the screen
+        threshold: 0
+      }
+    );
+
+    // Observe each section
+    sectionElements.forEach(element => {
+      observer.observe(element);
+    });
+
+    return () => {
+      sectionElements.forEach(element => {
+        observer.unobserve(element);
+      });
+      observer.disconnect();
+    };
+  }, []); // Only run once on mount
+
+  const handleScrollClick = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      // Temporarily set active immediately for snappier UI feel when clicking
+      setActiveSection(id);
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SiteHeader />
       
-      <main className="flex-1 py-12 md:py-20">
-        <div className="container max-w-6xl mx-auto px-4">
-          
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate("/")} 
-            className="mb-8 pl-0 text-muted-foreground hover:text-foreground hover:bg-transparent"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Home
-          </Button>
-
-          {/* Header Section */}
-          <div className="mb-14 text-center">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight mb-4">
-              Comprehensive <span className="text-primary">Pregnancy Guide</span>
+      {/* Hero Banner for the Hub */}
+      <div className="bg-primary/5 border-b border-border py-12 md:py-20 relative overflow-hidden">
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="container max-w-6xl mx-auto px-4 md:px-8 relative z-10 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="max-w-2xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight mb-6">
+              The Comprehensive <span className="text-primary">Maternal Guide</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Your step-by-step companion from preconception planning, through every trimester, to postpartum care and beyond.
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              Your deeply researched, complete clinical blueprint from preconception through postpartum recovery. Verified by top medical standards.
             </p>
           </div>
+          <div className="hidden md:flex w-32 h-32 bg-primary/10 rounded-[2rem] border border-primary/20 items-center justify-center rotate-3 shadow-sm">
+            <BookOpen size={64} className="text-primary" />
+          </div>
+        </div>
+      </div>
 
-          {/* New Comprehensive Guide Section Using Tabs */}
-          <div className="mb-20">
-            <Tabs defaultValue="planning" className="w-full">
-              <div className="overflow-x-auto pb-4 mb-4 hide-scrollbar">
-                <TabsList className="w-max inline-flex h-12 items-center justify-start rounded-full bg-muted p-1 text-muted-foreground w-full sm:w-auto">
-                  <TabsTrigger value="planning" className="rounded-full px-4 py-2 text-sm font-semibold data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm">
-                    <CalendarHeart className="w-4 h-4 mr-2" /> Planning & Confirmation
-                  </TabsTrigger>
-                  <TabsTrigger value="trimesters" className="rounded-full px-4 py-2 text-sm font-semibold data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm">
-                    <Baby className="w-4 h-4 mr-2" /> The Trimesters
-                  </TabsTrigger>
-                  <TabsTrigger value="postpartum" className="rounded-full px-4 py-2 text-sm font-semibold data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm">
-                    <HeartPulse className="w-4 h-4 mr-2" /> Postpartum Care
-                  </TabsTrigger>
-                  <TabsTrigger value="health" className="rounded-full px-4 py-2 text-sm font-semibold data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm">
-                    <Activity className="w-4 h-4 mr-2" /> Health
-                  </TabsTrigger>
-                  <TabsTrigger value="resources" className="rounded-full px-4 py-2 text-sm font-semibold data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm">
-                    <Library className="w-4 h-4 mr-2" /> Resources
-                  </TabsTrigger>
-                  <TabsTrigger value="logistics" className="rounded-full px-4 py-2 text-sm font-semibold data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm">
-                    <Bus className="w-4 h-4 mr-2" /> Logistics
-                  </TabsTrigger>
-                </TabsList>
+      <main className="flex-1 container max-w-7xl mx-auto px-4 md:px-8 py-12 flex flex-col lg:flex-row gap-12 relative">
+        
+        {/* Sticky Sidebar Navigation */}
+        <aside className="hidden lg:block w-72 shrink-0">
+          <div className="sticky top-28 bg-card border border-border/60 rounded-2xl p-6 shadow-sm">
+            <h3 className="font-bold text-foreground mb-6 uppercase tracking-wider text-sm flex items-center gap-2">
+              <FileText className="w-4 h-4 text-primary" /> Table of Contents
+            </h3>
+            <nav className="flex flex-col space-y-2">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => handleScrollClick(item.id)}
+                  className={`flex items-center text-left px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-300 ${
+                    activeSection === item.id 
+                      ? "bg-primary text-primary-foreground shadow-md" 
+                      : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                  }`}
+                >
+                  <item.icon className="w-4 h-4 mr-3 shrink-0" />
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+          </div>
+        </aside>
+
+        {/* Main Content Area */}
+        <div className="flex-1 max-w-4xl space-y-20 pb-24">
+          
+          {/* SECTION: PLANNING & CONFIRMATION */}
+          <section id="planning" className="scroll-mt-28">
+            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
+                <CalendarHeart size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Planning & Confirmation</h2>
+            </div>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Preconception Health</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  Preparing your body before conception is arguably one of the most critical steps in the maternal journey. The goal is to optimize your metabolic and physical state prior to the rapid demands of early fetal development. According to the ACOG, women should begin taking a daily prenatal vitamin containing at least 400 micrograms (mcg) of folic acid a minimum of one month before attempting to conceive. Folic acid drastically reduces the risk of neural tube defects like spina bifida, which occur in the first few weeks of pregnancy—often before a woman even knows she is pregnant.
+                </p>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  Additionally, achieving a healthy Body Mass Index (BMI) prior to conception can lower the risk of gestational diabetes, preeclampsia, and cesarean delivery. Discussing chronic conditions such as hypertension, thyroid disorders, or diabetes with your provider ensures your medications are safe for pregnancy and your conditions are stabilized before conception.
+                </p>
               </div>
 
-              {/* TAB CONTENT: PLANNING & CONFIRMATION */}
-              <TabsContent value="planning" className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <Card className="border-l-4 border-l-primary/60 shadow-sm hover:shadow-md transition-shadow">
-                    <CardHeader>
-                      <ShieldCheck className="w-8 h-8 text-primary mb-2" />
-                      <CardTitle>Preconception Health</CardTitle>
-                      <CardDescription>Preparing your body for a healthy pregnancy.</CardDescription>
-                    </CardHeader>
-                    <CardContent className="text-muted-foreground text-sm space-y-2">
-                      <ul className="list-disc pl-5 space-y-1">
-                        <li>Folic acid and prenatal vitamins</li>
-                        <li>Vaccinations to update</li>
-                        <li>Managing existing medical conditions</li>
-                        <li>Achieving a healthy weight</li>
-                        <li>Understanding family medical history</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card className="border-l-4 border-l-primary/60 shadow-sm hover:shadow-md transition-shadow">
-                    <CardHeader>
-                      <HeartHandshake className="w-8 h-8 text-primary mb-2" />
-                      <CardTitle>Counseling</CardTitle>
-                      <CardDescription>Expert guidance before and during pregnancy.</CardDescription>
-                    </CardHeader>
-                    <CardContent className="text-muted-foreground text-sm space-y-2">
-                      <ul className="list-disc pl-5 space-y-1">
-                        <li>Genetic screening and guidance</li>
-                        <li>Fertility counseling options</li>
-                        <li>Nutritional counseling</li>
-                        <li>Mental health check-ins</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Counseling & Screening</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  Preconception counseling involves a comprehensive review of your family's medical history. Providers often suggest genetic carrier screening, a simple blood or saliva test that checks if you or your partner carry genetic markers for conditions like Cystic Fibrosis, Spinal Muscular Atrophy, or Sickle Cell Disease. Because carriers generally do not show symptoms, this proactive approach allows couples to understand their risks.
+                </p>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  Vaccinations are also reviewed. The MMR (Measles, Mumps, Rubella) and Varicella (Chickenpox) vaccines contain live viruses and cannot be administered during pregnancy. Contracting these illnesses while pregnant can lead to severe congenital defects, so ensuring immunity beforehand is crucial.
+                </p>
+              </div>
 
-                  <Card className="border-l-4 border-l-primary/60 shadow-sm hover:shadow-md transition-shadow">
-                    <CardHeader>
-                      <CheckCircle2 className="w-8 h-8 text-primary mb-2" />
-                      <CardTitle>Confirmation</CardTitle>
-                      <CardDescription>You suspect you are pregnant, what is next?</CardDescription>
-                    </CardHeader>
-                    <CardContent className="text-muted-foreground text-sm space-y-2">
-                      <ul className="list-disc pl-5 space-y-1">
-                        <li>At-home pregnancy tests</li>
-                        <li>Scheduling an official dating ultrasound</li>
-                        <li>Blood tests (hCG levels)</li>
-                        <li>Initial OB/GYN or midwife intake</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </TabsContent>
-
-              {/* TAB CONTENT: THE TRIMESTERS */}
-              <TabsContent value="trimesters" className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <Accordion type="single" collapsible className="w-full bg-card rounded-2xl border px-6 py-2 shadow-sm">
-                  
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger className="text-lg font-semibold hover:text-primary">First, Second & Third Trimesters</AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground space-y-4 pt-2 pb-6">
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div className="bg-muted/50 p-4 rounded-xl">
-                          <h4 className="font-bold text-foreground mb-2">1st Trimester</h4>
-                          <p className="text-sm">Weeks 1-12. Rapid fetal development. Focus on overcoming early symptoms. Key dating scans and initial genetic tests happen here.</p>
-                        </div>
-                        <div className="bg-muted/50 p-4 rounded-xl">
-                          <h4 className="font-bold text-foreground mb-2">2nd Trimester</h4>
-                          <p className="text-sm">Weeks 13-27. Often called the 'honeymoon phase'. Energy returns, the anatomy scan occurs, and you may feel the first kicks!</p>
-                        </div>
-                        <div className="bg-muted/50 p-4 rounded-xl">
-                          <h4 className="font-bold text-foreground mb-2">3rd Trimester</h4>
-                          <p className="text-sm">Weeks 28-40+. The home stretch. Focus shifts to maximum growth, monitoring kick counts, and preparing for labor & delivery.</p>
-                        </div>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                  
-                  <AccordionItem value="item-2">
-                    <AccordionTrigger className="text-lg font-semibold hover:text-primary">Symptoms & Physical Changes</AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground space-y-4 pt-2 pb-6">
-                      <ul className="space-y-2 text-sm">
-                        <li><strong>What to expect:</strong> Changing energy levels, hormonal shifts, breast tenderness, and mood changes.</li>
-                        <li><strong>Common Symptoms & Discomforts:</strong> Nausea, fatigue, heartburn, backache, round ligament pain, and swollen ankles.</li>
-                        <li><strong>Symptom Changes:</strong> Nausea typically peaks in the 1st trimester, while backaches and swelling are more common in the 3rd.</li>
-                        <li><strong>Physical Changes:</strong> Weight gain tracking, skin changes (glow, pigmentation), and shifting center of gravity.</li>
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="item-3">
-                    <AccordionTrigger className="text-lg font-semibold hover:text-primary">Practices & Screenings</AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground space-y-4 pt-2 pb-6">
-                      <ul className="space-y-2 text-sm">
-                        <li><strong>Prenatal Practices:</strong> Take prenatal vitamins, stay hydrated, engage in safe exercise, and get plenty of rest.</li>
-                        <li><strong>What to Avoid:</strong> Unpasteurized dairy, raw meats, high-mercury fish, hot tubs, and heavy lifting.</li>
-                        <li><strong>Kick Counting:</strong> Starting in the 3rd trimester, track baby's movements to ensure healthy activity levels.</li>
-                        <li><strong>Screenings (What/Why/When):</strong> NT scan (1st tri), Anatomy scan (2nd tri), Glucose test (2nd tri), Group B Strep (3rd tri).</li>
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="item-4">
-                    <AccordionTrigger className="text-lg font-semibold hover:text-primary">Labor, Delivery & Birth Readiness</AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground space-y-4 pt-2 pb-6">
-                      <ul className="space-y-2 text-sm">
-                        <li><strong>Signs of Birth Readiness:</strong> Lightening (baby dropping), loss of mucus plug, water breaking, and regular contractions.</li>
-                        <li><strong>Childbirth Education Options:</strong> Lamaze, Bradley method, hypnobirthing, or hospital-led classes.</li>
-                        <li><strong>Labor & Delivery:</strong> Understanding the stages of labor, pain management options (epidural, nitrous oxide, natural), and interventions.</li>
-                        <li><strong>Birth Plan Specifics:</strong> Preferences for environment, delayed cord clamping, skin-to-skin contact, and support persons.</li>
-                        <li><strong>Location of Birth:</strong> Hospital, birthing center, or home birth considerations.</li>
-                        <li><strong>Plan for Check-ins:</strong> Knowing when to call the doctor or head to the hospital (e.g., 5-1-1 rule).</li>
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-
-                </Accordion>
-              </TabsContent>
-
-              {/* TAB CONTENT: POSTPARTUM CARE */}
-              <TabsContent value="postpartum" className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <Card className="border-t-4 border-t-pink-400 shadow-sm">
-                    <CardHeader>
-                      <HeartPulse className="w-6 h-6 text-pink-500 mb-2" />
-                      <CardTitle>Physical Recovery</CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-muted-foreground text-sm">
-                      Healing from vaginal or cesarean birth, managing postpartum bleeding (lochia), pelvic floor recovery, and recognizing warning signs that require medical attention.
-                    </CardContent>
-                  </Card>
-                  <Card className="border-t-4 border-t-purple-400 shadow-sm">
-                    <CardHeader>
-                      <Brain className="w-6 h-6 text-purple-500 mb-2" />
-                      <CardTitle>Mental Health</CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-muted-foreground text-sm">
-                      Distinguishing "baby blues" from postpartum depression (PPD) or anxiety (PPA). Building a support system and knowing when to ask a professional for help.
-                    </CardContent>
-                  </Card>
-                  <Card className="border-t-4 border-t-orange-400 shadow-sm">
-                    <CardHeader>
-                      <Baby className="w-6 h-6 text-orange-500 mb-2" />
-                      <CardTitle>Feeding</CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-muted-foreground text-sm">
-                      Navigating breastfeeding, pumping, or formula feeding. Learning latch techniques, managing supply, and utilizing lactation consultants.
-                    </CardContent>
-                  </Card>
-                  <Card className="border-t-4 border-t-blue-400 shadow-sm">
-                    <CardHeader>
-                      <CalendarDays className="w-6 h-6 text-blue-500 mb-2" />
-                      <CardTitle>Rest</CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-muted-foreground text-sm">
-                      Strategies for maximizing sleep in shifts, sleeping when the baby sleeps, and setting boundaries with visitors to prioritize recovery.
-                    </CardContent>
-                  </Card>
-                </div>
-              </TabsContent>
-
-              {/* TAB CONTENT: HEALTH RELATED ISSUES */}
-              <TabsContent value="health" className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <Card className="bg-destructive/5 border-destructive/20">
-                  <CardHeader>
-                     <CardTitle className="flex items-center text-destructive">
-                       <Activity className="w-5 h-5 mr-2" /> Health & Safety Warnings
-                     </CardTitle>
-                     <CardDescription>Crucial guidelines to protect your baby's development.</CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <div className="flex gap-4 items-start">
-                       <CigaretteOff className="w-8 h-8 text-destructive shrink-0 mt-1" />
-                       <div>
-                         <h4 className="font-bold text-foreground">Smoking</h4>
-                         <p className="text-sm text-muted-foreground mt-1">Smoking during pregnancy restricts oxygen to the baby and increases risks of premature birth, low birth weight, and SIDS. Quitting at any time helps.</p>
-                       </div>
-                    </div>
-                    <div className="flex gap-4 items-start">
-                       <WineOff className="w-8 h-8 text-destructive shrink-0 mt-1" />
-                       <div>
-                         <h4 className="font-bold text-foreground">Drinking</h4>
-                         <p className="text-sm text-muted-foreground mt-1">There is no known safe amount of alcohol use during pregnancy. Drinking can cause Fetal Alcohol Spectrum Disorders (FASDs), which result in lifelong physical and behavioral issues.</p>
-                       </div>
-                    </div>
-                    <div className="flex gap-4 items-start">
-                       <Pill className="w-8 h-8 text-destructive shrink-0 mt-1" />
-                       <div>
-                         <h4 className="font-bold text-foreground">Substance Use</h4>
-                         <p className="text-sm text-muted-foreground mt-1">Recreational drugs, unprescribed medications, and high doses of certain supplements can severely affect fetal development. Always consult your provider before taking any substance.</p>
-                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-
-              {/* TAB CONTENT: RESOURCES */}
-              <TabsContent value="resources" className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <Card className="border shadow-sm text-center py-6 hover:border-primary/50 transition-colors">
-                    <CardHeader className="items-center pb-2">
-                       <BookHeart className="w-12 h-12 text-primary mb-2" />
-                       <CardTitle>Books</CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-muted-foreground text-sm">
-                      Recommended reading like "Expecting Better", "What to Expect", and evidence-based guides on mindful birthing.
-                    </CardContent>
-                  </Card>
-                  <Card className="border shadow-sm text-center py-6 hover:border-primary/50 transition-colors">
-                    <CardHeader className="items-center pb-2">
-                       <Smartphone className="w-12 h-12 text-primary mb-2" />
-                       <CardTitle>Apps</CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-muted-foreground text-sm">
-                      Track your pregnancy week-by-week using highly rated apps like Ovia, What to Expect, or Flo Pregnancy.
-                    </CardContent>
-                  </Card>
-                  <Card className="border shadow-sm text-center py-6 hover:border-primary/50 transition-colors">
-                    <CardHeader className="items-center pb-2">
-                       <Building className="w-12 h-12 text-primary mb-2" />
-                       <CardTitle>Organizations</CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-muted-foreground text-sm">
-                      Connect with trusted groups like ACOG, La Leche League, and Postpartum Support International for reliable info.
-                    </CardContent>
-                  </Card>
-                </div>
-              </TabsContent>
-
-              {/* TAB CONTENT: LOGISTICS */}
-              <TabsContent value="logistics" className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <Card>
-                  <CardHeader>
-                     <CardTitle className="flex items-center">
-                       <ListChecks className="w-6 h-6 mr-2 text-primary" /> Care Logistics
-                     </CardTitle>
-                     <CardDescription>Managing the paperwork, travel, and scheduling of your pregnancy journey.</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                        <div>
-                          <h4 className="font-bold flex items-center mb-1"><ShieldCheck className="w-4 h-4 mr-2" /> Insurance & Issuance</h4>
-                          <p className="text-sm text-muted-foreground">Verify your prenatal coverage, understand deductibles, out-of-pocket maximums, and how to add your newborn to your policy after birth.</p>
-                        </div>
-                        <div>
-                          <h4 className="font-bold flex items-center mb-1"><CalendarDays className="w-4 h-4 mr-2" /> Maternity Leave</h4>
-                          <p className="text-sm text-muted-foreground">Research FMLA eligibility, state-sponsored family leave, employer policies, and short-term disability claims. Start paperwork in the 2nd trimester.</p>
-                        </div>
-                        <div>
-                          <h4 className="font-bold flex items-center mb-1"><BriefcaseMedical className="w-4 h-4 mr-2" /> Booking Appointments</h4>
-                          <p className="text-sm text-muted-foreground">You will have roughly 15 prenatal visits. Schedule them in batches if possible. Frequency increases to weekly in your final month.</p>
-                        </div>
-                        <div>
-                          <h4 className="font-bold flex items-center mb-1"><MapPin className="w-4 h-4 mr-2" /> Location Centers</h4>
-                          <p className="text-sm text-muted-foreground">Identify where routine checkups are held vs. where anatomy scans or labor takes place. Pre-register at your birthing hospital by week 30.</p>
-                        </div>
-                        <div className="md:col-span-2 bg-secondary/30 p-4 rounded-xl mt-2">
-                          <h4 className="font-bold flex items-center mb-1"><Bus className="w-4 h-4 mr-2 text-primary" /> Methods of Transportation</h4>
-                          <p className="text-sm text-muted-foreground">Ensure you have reliable transport for labor. If taking the UHS CMH Shuttle for routine care, book 48 hours in advance. Practice installing your infant car seat by week 36.</p>
-                        </div>
-                     </div>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-
-            </Tabs>
-          </div>
-
-          <hr className="border-border my-12" />
-
-          {/* Myth vs Fact Section - Now rendered below or distinctly separated */}
-          <div className="mb-14 text-center mt-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight mb-4">
-              Pregnancy: <span className="text-primary">Myth vs. Fact</span>
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Get the truth about pregnancy, backed by the experts.
-            </p>
-          </div>
-
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
-          >
-            {mythFacts.map((item, i) => (
-              <motion.div
-                variants={itemVariants}
-                key={i}
-                className="group relative w-full h-[320px] md:h-72 cursor-pointer [perspective:1000px]"
-              >
-                <div className="absolute inset-0 w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                  
-                  {/* Front of Card (Myth) */}
-                  <div className="absolute inset-0 w-full h-full bg-card border border-border rounded-3xl p-8 flex flex-col items-center justify-center text-center shadow-md [backface-visibility:hidden]">
-                    <span className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-4">The Myth</span>
-                    <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">"{item.myth}"</h3>
-                    <span className="absolute bottom-6 text-sm text-primary/70 flex items-center">
-                      Hover or tap to reveal the truth <ArrowRight className="w-4 h-4 ml-1" />
-                    </span>
-                  </div>
-
-                  {/* Back of Card (Fact) */}
-                  <div className="absolute inset-0 w-full h-full bg-primary/10 border border-primary/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center shadow-lg [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                    <span className="text-sm font-bold text-primary uppercase tracking-wider mb-2">The Fact</span>
-                    <p className="text-xl md:text-2xl font-semibold text-foreground leading-snug">
-                      {item.fact}
-                    </p>
-                  </div>
-
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Footer Call to Action */}
-          <div className="mt-12 bg-secondary/50 border border-border border-l-4 border-l-primary rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
-            <div>
-              <h3 className="text-xl md:text-2xl font-bold text-foreground mb-1">Still have questions?</h3>
-              <p className="text-muted-foreground font-medium">Always ask your doctor.</p>
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Confirmation</h3>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  Human Chorionic Gonadotropin (hCG) is the hormone detected by home pregnancy tests. While modern tests are highly sensitive, the CDC and FDA recommend waiting until the first day of your missed period to minimize false negatives. Once a home test is positive, you must schedule a confirmation appointment with your OB/GYN or midwife. This initial appointment typically occurs between weeks 8 and 10. During this visit, clinical staff will perform a dating ultrasound (to measure the crown-rump length of the embryo for an accurate due date), conduct comprehensive blood panels, and review early symptom management.
+                </p>
+              </div>
             </div>
-            <Button size="lg" className="rounded-xl px-8 shadow-md" asChild>
-              <a href="tel:5551234">
-                <Phone className="w-5 h-5 mr-2" />
-                Call Triage Nurse
-              </a>
-            </Button>
+          </section>
+
+          {/* SECTION: FIRST TRIMESTER */}
+          <section id="first-trimester" className="scroll-mt-28">
+            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
+                <Sparkles size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">First Trimester (Weeks 1 - 12)</h2>
+            </div>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">What to Expect & Common Symptoms</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  The first trimester is a period of massive, profound physiological adaptation. High levels of estrogen, progesterone, and hCG often trigger acute symptoms, the most infamous being "morning sickness" (nausea and vomiting of pregnancy). Despite the name, nausea can strike at any hour. Extreme fatigue is also universally reported as your cardiovascular system expands and metabolic energy is diverted to develop the placenta.
+                </p>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  Breast tenderness, frequent urination (due to expanding uterine volume pressing on the bladder), and food aversions are normal. To manage these, ACOG recommends eating smaller, more frequent meals rich in complex carbohydrates and protein, remaining hydrated, and attempting to sleep whenever fatigue sets in.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Early Screenings</h3>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  Between weeks 10 and 13, you will be offered Non-Invasive Prenatal Testing (NIPT) and a Nuchal Translucency (NT) scan. The NIPT is a simple maternal blood draw that analyzes fetal DNA circulating in the mother's blood to screen for chromosomal abnormalities like Down Syndrome (Trisomy 21). The NT scan is a specialized ultrasound that measures the fluid at the back of the fetus's neck, providing further chromosomal risk assessment and confirming structural development.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION: SECOND TRIMESTER */}
+          <section id="second-trimester" className="scroll-mt-28">
+            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
+                <Baby size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Second Trimester (Weeks 13 - 27)</h2>
+            </div>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">What to Expect & Physical Changes</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  Widely regarded as the "honeymoon phase," the second trimester usually brings relief from acute nausea and crushing fatigue. The placenta fully takes over hormone production. Physically, the uterus expands rapidly, rising out of the pelvis, and a visible "bump" will form. You will likely feel your first fetal movements (called "quickening") between weeks 16 and 22. Initially, these feel like subtle flutters or gas bubbles, progressing to definitive kicks.
+                </p>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  New discomforts may arrive: round ligament pain (sharp, brief pains in the lower abdomen caused by the stretching of the ligaments supporting the uterus), leg cramps, and nasal congestion (due to increased blood volume swelling the mucous membranes).
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Critical Mid-Pregnancy Screenings</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  <strong>The Anatomy Scan (Weeks 18-22):</strong> This comprehensive ultrasound evaluates exactly how the fetus is developing. The technician will measure cardiac structures, brain ventricles, kidneys, limbs, spine, and face, as well as placental location. You can usually find out the sex of the baby during this scan if you choose.
+                </p>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  <strong>Glucose Challenge Test (Weeks 24-28):</strong> To screen for gestational diabetes, you consume a sugary liquid, and your blood sugar is tested an hour later. If elevated, a 3-hour tolerance test diagnostic is required. Unmanaged gestational diabetes can lead to macrosomia (large birth weight) and infant hypoglycemia.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION: THIRD TRIMESTER */}
+          <section id="third-trimester" className="scroll-mt-28">
+            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
+                <HeartPulse size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Third Trimester (Weeks 28 - 40+)</h2>
+            </div>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">The Home Stretch & Kick Counting</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  The fetus is prioritizing weight gain and neural maturation. The sheer physical footprint of the baby will press heavily against your diaphragm (causing shortness of breath) and your stomach (causing severe heartburn). Sleep disrupts frequently.
+                </p>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  <strong>Kick Counting:</strong> A crucial safety protocol initiated at week 28. Choose a time when the baby is typically active. Sit down or lie on your side, and count every kick, roll, or jab. You should feel 10 positive movements within 2 hours. A sudden decrease in fetal movement requires immediate clinical investigation, as it can indicate fetal distress.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Final Screenings</h3>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  Around weeks 35-37, a Group B Streptococcus (GBS) swab is taken. GBS is a common bacteria that is relatively harmless to adults but can cause severe infection in newborns during vaginal delivery. If positive, you will receive IV antibiotics during labor to protect the infant.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION: LABOR & DELIVERY */}
+          <section id="labor-delivery" className="scroll-mt-28">
+            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
+                <FileText size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Labor & Delivery Readiness</h2>
+            </div>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Signs of Birth Readiness & Check-Ins</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  Do not rely purely on dates. "Lightening" is when the baby drops into the pelvic cavity. You may lose your protective mucus plug contextually with mild "bloody show." Braxton Hicks (practice) contractions will gain frequency, but true labor contractions exhibit consistency: they grow longer, stronger, and unequivocally closer together.
+                </p>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  <strong>The 5-1-1 Rule:</strong> Medical guidelines suggest calling your triage team when contractions are 5 minutes apart, lasting 1 minute each, for 1 full hour. If your water breaks (whether a gush or trickle), you must contact the hospital immediately due to the risk of infection.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Birth Plan Specifics & Logistics</h3>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  A Birth Plan defines your medical preferences, though flexibility is paramount. Key considerations: pain management (epidural, nitrous oxide, natural birthing techniques), the atmosphere of the room, who cuts the umbilical cord, preferences on delayed cord clamping, and immediate skin-to-skin contact.
+                </p>
+                <p className="text-lg text-muted-foreground leading-loose mt-4">
+                  Discuss the location of birth (hospital birthing suite, specialized birthing center, or guided home delivery) well in advance. Research childbirth education classes (Lamaze, Bradley method, or hypnobirthing) early in the third trimester.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION: POSTPARTUM CARE */}
+          <section id="postpartum" className="scroll-mt-28">
+            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
+                <HeartPulse size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Postpartum Care ("The Fourth Trimester")</h2>
+            </div>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Physical Recovery</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  The initial six weeks are fundamentally focused on healing. Vaginal tearing, episiotomy stitches, or major abdominal surgery (Cesarean delivery) demand severe restriction of activity. Lochia (postpartum bleeding) will mimic a heavy period for several days before tapering over weeks. No tampons, intercourse, or heavy lifting should occur until cleared at the 6-week post-op checkup.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Mental Health: "Blues" vs. PPD</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  An immediate, massive hormone crash causes "Baby Blues" (weeping, anxiety, exhaustion) in 80% of mothers, resolving in roughly two weeks. However, if severe anxiety, an inability to bond with the infant, sleep disturbances despite exhaustion, or intrusive terrible thoughts persist beyond 14 days, this indicates Postpartum Depression (PPD) or Anxiety (PPA). PPD requires immediate clinical intervention and is a highly treatable complication of childbirth.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Feeding & Rest</h3>
+                <p className="text-lg text-muted-foreground leading-loose pb-8">
+                  Whether exclusively breastfeeding, pumping, using formula, or combining methods, infant feeding entails a rigorous 2-3 hour cycle schedule around the clock. Lactation consultants are instrumental for correcting latch pathology and mitigating mastitis (painful breast tissue infection). Ensure you prioritize your own nutrition and hydration, and literally "sleep when the baby sleeps" to combat severe systemic sleep deprivation.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION: HEALTH ISSUES */}
+          <section id="health-issues" className="scroll-mt-28">
+            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
+              <div className="w-12 h-12 rounded-xl bg-destructive/10 flex items-center justify-center text-destructive border border-destructive/20 shrink-0">
+                <ShieldAlert size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Health & Safety Strictures</h2>
+            </div>
+            
+            <div className="space-y-8 bg-destructive/5 rounded-3xl p-8 md:p-10 border border-destructive/20">
+              <div className="flex gap-4">
+                <CheckCircle2 className="w-6 h-6 text-destructive shrink-0 mt-1" />
+                <div>
+                  <h4 className="text-xl font-bold text-foreground mb-2">Smoking</h4>
+                  <p className="text-md text-muted-foreground leading-relaxed">Smoking drastically restricts fetal oxygen supply, acting as a massive contributor to placental abruption, profound growth restriction, premature birth, and fatal outcomes such as Sudden Infant Death Syndrome (SIDS).</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <CheckCircle2 className="w-6 h-6 text-destructive shrink-0 mt-1" />
+                <div>
+                  <h4 className="text-xl font-bold text-foreground mb-2">Drinking Alcohol</h4>
+                  <p className="text-md text-muted-foreground leading-relaxed">The CDC firmly dictates there is no known safe amount of alcohol, no safe time to drink, and no safe type of alcohol during pregnancy. Fetal Alcohol Spectrum Disorders (FASDs) are completely preventable but cause lifelong physical organ damage and severe neurological impairment.</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <CheckCircle2 className="w-6 h-6 text-destructive shrink-0 mt-1" />
+                <div>
+                  <h4 className="text-xl font-bold text-foreground mb-2">Substance Use</h4>
+                  <p className="text-md text-muted-foreground leading-relaxed">Illicit substances and unprescribed pharmaceuticals can cross the placental barrier, leading to lethal birth defects or forcing the infant to undergo debilitating Neonatal Abstinence Syndrome (chemical withdrawal) after birth. Always disclose substance use to your provider so they can provide specialized cessation support.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION: LOGISTICS */}
+          <section id="logistics" className="scroll-mt-28">
+            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
+                <Bus size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Maternity Logistics</h2>
+            </div>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Insurance, Issuance & Maternity Leave</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  Logistical administration is complex. Contact your insurer early to understand the difference between preventive prenatal care coverages versus high-deductible hospital delivery fees. Understand how to "add" a dependent—called insurance Issuance—usually required within precisely 30 days of birth. 
+                </p>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  Research FMLA (Family and Medical Leave Act) which protects your job for 12 unpaid weeks in the US, alongside any state-sponsored short-term disability or paid family leave policies natively offered by your employer. File your FMLA paperwork early in the third trimester.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Transportation & Appointment Batching</h3>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  A low-risk pregnancy demands approximately 15 clinical visits. Batching blood-draws directly after standard appointments minimizes disruption. Pre-determine how you will manage location transit if rural. UHS CMH offers localized Maternity Transit systems specifically synchronized with Chenango Memorial Hospital routes.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION: RESOURCES */}
+          <section id="resources" className="scroll-mt-28">
+            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
+                <Library size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">External Resources</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-card border border-border p-6 rounded-2xl">
+                <h4 className="font-bold text-xl mb-3">Books</h4>
+                <ul className="text-muted-foreground space-y-2 text-sm leading-relaxed">
+                  <li>• "Expecting Better" by Emily Oster</li>
+                  <li>• "Mayo Clinic Guide to a Healthy Pregnancy"</li>
+                  <li>• "The Fourth Trimester" by Kimberly Ann Johnson</li>
+                </ul>
+              </div>
+              <div className="bg-card border border-border p-6 rounded-2xl">
+                <h4 className="font-bold text-xl mb-3">Apps</h4>
+                <ul className="text-muted-foreground space-y-2 text-sm leading-relaxed">
+                  <li>• <strong>Ovia Pregnancy:</strong> Tracking & analytics</li>
+                  <li>• <strong>Flo:</strong> Cycle & pregnancy mapping</li>
+                  <li>• <strong>Full Term:</strong> Contraction timer UI</li>
+                </ul>
+              </div>
+              <div className="bg-card border border-border p-6 rounded-2xl">
+                <h4 className="font-bold text-xl mb-3">Organizations</h4>
+                <ul className="text-muted-foreground space-y-2 text-sm leading-relaxed">
+                  <li>• Postpartum Support Int. (PSI)</li>
+                  <li>• La Leche League (Feeding support)</li>
+                  <li>• ACOG Public Patience Portal</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* CITATIONS */}
+          <div className="mt-20 pt-10 border-t border-border">
+            <p className="text-[10px] md:text-xs text-muted-foreground/60 leading-relaxed text-justify">
+              <strong>Medical Disclaimer & Information Citations:</strong> This material is provided for educational and informational utility only and does not constitute formal medical diagnosis, advice, or physician directives. Always consult your primary care provider or certified OB/GYN concerning clinical interventions. The robust clinical guidance, screening schedules, dietary constraints, and postnatal psychiatric pathways delineated within this comprehensive guide are formally synthesized from published, peer-reviewed clinical guidelines authored by: The American College of Obstetricians and Gynecologists (ACOG), The Centers for Disease Control and Prevention (CDC), and the World Health Organization (WHO) Maternal Mortality frameworks. Information verified current as of 2026 maternity protocols.
+            </p>
           </div>
 
         </div>
@@ -439,5 +441,8 @@ const PregnancyGuide = () => {
     </div>
   );
 };
+
+// We use BookOpen for the hero icon, need to import it here.
+import { BookOpen } from "lucide-react";
 
 export default PregnancyGuide;

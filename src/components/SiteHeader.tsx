@@ -3,10 +3,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const navLinks = [
-  { label: "Resources", href: "#resources" },
-  { label: "Services", href: "#services" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "Resources", href: "/resources" },
+  { label: "Services", href: "/#services" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const SiteHeader = () => {
@@ -24,13 +24,13 @@ const SiteHeader = () => {
 
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+            <Link
+              key={link.label}
+              to={link.href}
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -46,14 +46,14 @@ const SiteHeader = () => {
       {mobileOpen && (
         <nav className="md:hidden border-t border-border px-6 pb-4 pt-2 flex flex-col gap-3">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+            <Link
+              key={link.label}
+              to={link.href}
               className="text-sm font-medium text-muted-foreground hover:text-primary py-2 transition-colors"
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
       )}
