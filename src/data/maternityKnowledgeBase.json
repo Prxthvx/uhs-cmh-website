@@ -1,0 +1,62 @@
+{
+    "planningAndConfirmation": {
+        "pageTitle": "Planning & Confirmation",
+        "pageDescription": "Everything you need to know before you get pregnant and right after you see that positive test. All information is sourced from ACOG and the CDC.",
+        "sections": [
+            {
+                "id": "preconception-health",
+                "title": "Getting Your Body Ready (Preconception)",
+                "content": [
+                    {
+                        "subtitle": "The Power of Folic Acid",
+                        "details": "You need 400 micrograms (mcg) of folic acid every single day, starting at least one month BEFORE you get pregnant. This is the most important vitamin for preventing major birth defects in the baby's brain and spine (like spina bifida). You can get this from a daily prenatal vitamin. Foods like spinach, beans, and enriched cereals also have it, but a vitamin is the only way to be sure you get enough."
+                    },
+                    {
+                        "subtitle": "Managing Your Weight",
+                        "details": "Try to reach a healthy weight before getting pregnant. Being underweight can make it harder to get pregnant. Being overweight increases your risk for high blood pressure, gestational diabetes, and having a very large baby, which can complicate delivery."
+                    },
+                    {
+                        "subtitle": "Stopping Harmful Habits",
+                        "details": "Stop drinking alcohol, smoking, vaping, and using street drugs immediately. There is NO safe amount of alcohol during pregnancy. Smoking increases the risk of your baby being born too early or too small. If you need help quitting, tell your doctor—they have resources that can help you without judgment."
+                    }
+                ]
+            },
+            {
+                "id": "medical-history",
+                "title": "Counseling & Medical History",
+                "content": [
+                    {
+                        "subtitle": "Reviewing Your Medications",
+                        "details": "Write down every prescription pill, over-the-counter medicine, and herbal supplement you take. Some common medicines (like certain acne pills or blood pressure drugs) are very dangerous for a baby. Do not stop taking your needed medicines without asking your doctor first, but get them reviewed immediately."
+                    },
+                    {
+                        "subtitle": "Genetic Carrier Screening",
+                        "details": "Before you get pregnant, you can take a simple blood or saliva test to see if you carry genes for inherited disorders like Cystic Fibrosis or Sickle Cell Disease. Even if you feel perfectly healthy, you could be a carrier. If both you and your partner are carriers, your baby has a higher chance of having the disorder."
+                    },
+                    {
+                        "subtitle": "Vaccine Checkup",
+                        "details": "Make sure you are up to date on your vaccines. Illnesses like Rubella (German measles) or Chickenpox can cause severe birth defects if you catch them while pregnant. Some vaccines cannot be given during pregnancy, so you must get them beforehand and wait a month before trying to conceive."
+                    }
+                ]
+            },
+            {
+                "id": "confirmation",
+                "title": "Confirming the Pregnancy",
+                "content": [
+                    {
+                        "subtitle": "When to Take a Home Test",
+                        "details": "Home pregnancy tests check your urine for a hormone called hCG. For the most accurate results, wait until the first day of your missed period. Taking a test too early might give you a 'false negative' because your hCG levels aren't high enough yet. Use your first morning urine, as it has the highest concentration of the hormone."
+                    },
+                    {
+                        "subtitle": "What to Expect at Your First Doctor's Visit",
+                        "details": "Once you get a positive home test, call Chenango Memorial Hospital to schedule your 'Confirmation of Pregnancy' visit. This usually happens around 8 weeks after your last period. The doctor will likely do a urine or blood test to officially confirm it. They may also do a dating ultrasound to see exactly how far along you are and give you an official due date."
+                    },
+                    {
+                        "subtitle": "Early Warning Signs to Watch For",
+                        "details": "It is normal to feel tired, nauseous, or have sore breasts. However, if you experience heavy bleeding (soaking a pad), severe cramps that feel worse than a period, or severe dizziness, call the Triage Nurse or go to the ER immediately. These could be signs of an ectopic pregnancy (when the egg attaches outside the uterus), which is a medical emergency."
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,6 +1,8 @@
 import SiteHeader from "@/components/SiteHeader";
 import HeroSection from "@/components/HeroSection";
 import ResourceCards from "@/components/ResourceCards";
+import MythBustersGrid from "@/components/MythBustersGrid";
+import TransitBanner from "@/components/TransitBanner";
 import ServicesSection from "@/components/ServicesSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
@@ -13,6 +15,8 @@ const Index = () => {
       <SiteHeader />
       <HeroSection />
       <ResourceCards />
+      <MythBustersGrid />
+      <TransitBanner />
       <ServicesSection />
       <FAQSection />
       <ContactSection />

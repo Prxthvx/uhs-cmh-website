@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.jpg";
@@ -12,6 +13,7 @@ const images = [hero1, hero2, hero3, hero4, hero5];
 
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -65,7 +67,11 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-8">
           
-          <Button size="lg" className="px-8 py-3 text-base font-medium rounded-lg">
+          <Button 
+            size="lg" 
+            className="px-8 py-3 text-base font-medium rounded-lg"
+            onClick={() => navigate('/resources')}
+          >
             Explore Resources
           </Button>
         </motion.div>

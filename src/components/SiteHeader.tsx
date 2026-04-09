@@ -1,5 +1,6 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const navLinks = [
   { label: "Resources", href: "#resources" },
@@ -14,12 +15,12 @@ const SiteHeader = () => {
   return (
     <header className="bg-background">
       <div className="container flex items-center justify-between py-4">
-        <a href="#" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
             <span className="text-primary-foreground font-bold text-sm">M</span>
           </div>
           <span className="font-semibold text-lg text-foreground">MaternalHealth</span>
-        </a>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
