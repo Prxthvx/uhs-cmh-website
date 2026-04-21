@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 
 const navLinks = [
   { label: "Resources", href: "/resources" },
-  { label: "Services", href: "/#services" },
-  { label: "FAQ", href: "/#faq" },
+  { label: "Real Stories", href: "/real-stories" },
+  { label: "Professional Advice", href: "/professional-advice" },
+  { label: "Diverse Voices", href: "/diverse-voices" },
+  { label: "Support", href: "/support" },
+  { label: "Community", href: "/community" },
   { label: "Contact", href: "/#contact" },
 ];
 

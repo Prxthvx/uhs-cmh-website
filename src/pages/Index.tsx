@@ -1,9 +1,12 @@
 import SiteHeader from "@/components/SiteHeader";
 import HeroSection from "@/components/HeroSection";
 import ResourceCards from "@/components/ResourceCards";
+import FeaturedVideos from "@/components/FeaturedVideos";
+import TrendingTopics from "@/components/TrendingTopics";
+import QuickAccessButtons from "@/components/QuickAccessButtons";
 import MythBustersGrid from "@/components/MythBustersGrid";
 import TransitBanner from "@/components/TransitBanner";
-import ServicesSection from "@/components/ServicesSection";
+
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import SiteFooter from "@/components/SiteFooter";
@@ -14,10 +17,13 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <HeroSection />
+      <FeaturedVideos />
+      <TrendingTopics />
+      <QuickAccessButtons />
       <ResourceCards />
       <MythBustersGrid />
       <TransitBanner />
-      <ServicesSection />
+
       <FAQSection />
       <ContactSection />
       <SiteFooter />
