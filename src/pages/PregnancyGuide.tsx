@@ -7,6 +7,55 @@ import { BookOpen, FileText, CalendarHeart, Sparkles, Baby, HeartPulse, ShieldAl
 const PregnancyGuide = () => {
   const { hash } = useLocation();
   const [activeSection, setActiveSection] = useState("planning");
+  const [selectedWeekIdx, setSelectedWeekIdx] = useState(0);
+
+  const weekData = [
+    { week: "Week 4",    trimester: 1, emoji: "🌱", size: "Poppy seed", cm: "0.1 cm",  progress: 10,
+      baby: "Implantation is complete. The embryo forms three layers: ectoderm (skin & brain), mesoderm (heart & muscles), and endoderm (organs). The amniotic sac begins forming around the embryo.",
+      mom: "You may notice a missed period. Light spotting (implantation bleeding) is normal. Breasts may feel tender and you may feel unusually tired." },
+    { week: "Week 5",    trimester: 1, emoji: "🫘", size: "Sesame seed", cm: "0.2 cm",  progress: 12,
+      baby: "The heart begins beating — a tiny flicker visible on early ultrasound. The neural tube (future brain and spinal cord) is closing. Tiny arm and leg buds appear.",
+      mom: "Nausea often starts this week. Fatigue hits hard as your body floods with hCG and progesterone. Mood swings are completely normal." },
+    { week: "Week 6",    trimester: 1, emoji: "🌿", size: "Lentil", cm: "0.6 cm",  progress: 15,
+      baby: "The heartbeat is detectable by ultrasound (~100–160 bpm). Eyes, ears, and nostrils begin forming. The brain is dividing into five distinct regions.",
+      mom: "Morning sickness often peaks. Frequent urination begins as the uterus presses the bladder. Strong food aversions and smell sensitivity are very common." },
+    { week: "Week 8",    trimester: 1, emoji: "🫐", size: "Raspberry", cm: "1.6 cm",  progress: 20,
+      baby: "All major organs are present in early form. Individual fingers and toes are forming. The baby starts moving — though you won't feel it yet.",
+      mom: "Your uterus is now the size of a large orange. Heartburn may begin. Bloating and constipation from progesterone slowing digestion are common." },
+    { week: "Week 10",   trimester: 1, emoji: "🍓", size: "Strawberry", cm: "3 cm",   progress: 25,
+      baby: "Now officially a fetus — not an embryo. All vital organs are formed. Tiny fingernails are growing. The baby can make small movements and swallow amniotic fluid.",
+      mom: "The worst nausea often begins easing. The NIPT blood test is now available. Emotional waves — anxiety, joy, fear — are all completely normal." },
+    { week: "Week 12",   trimester: 1, emoji: "🍋", size: "Lime", cm: "5.4 cm",  progress: 30,
+      baby: "The fetus has a fully formed face and can open and close its fists. Reflexes are developing. Kidneys are producing urine. The miscarriage risk drops significantly.",
+      mom: "End of the first trimester. Nausea usually improves. Your bump may become visible. The Nuchal Translucency (NT) ultrasound is done this week." },
+    { week: "Week 14",   trimester: 2, emoji: "🍑", size: "Peach", cm: "8 cm",    progress: 35,
+      baby: "The baby can make facial expressions — squinting, frowning, grimacing. Fine lanugo hair begins covering the body. The thyroid gland starts producing hormones.",
+      mom: "Energy returns for many women — the honeymoon phase begins! Nausea typically resolves. Your bump is now more visible to others." },
+    { week: "Week 16",   trimester: 2, emoji: "🥑", size: "Avocado", cm: "11.6 cm", progress: 40,
+      baby: "The baby can hear sounds — your heartbeat, your voice, music. Eyes can move side to side behind closed lids. Bones are hardening as calcium deposits build.",
+      mom: "First faint movements — like gentle flutters or bubbles — may be felt. This is called 'quickening.' Round ligament pain (brief sharp pains) may start." },
+    { week: "Week 20",   trimester: 2, emoji: "🍌", size: "Banana", cm: "16 cm",   progress: 50,
+      baby: "The anatomy scan checks every major organ. Sex can be determined. The baby has a sleep/wake cycle, can hear loud sounds, and is swallowing amniotic fluid regularly.",
+      mom: "Halfway point! The anatomy scan is a major milestone — you'll see your baby's face, heart, and limbs in detail. Backaches and a visible round belly." },
+    { week: "Week 22",   trimester: 2, emoji: "🍈", size: "Papaya", cm: "27 cm",   progress: 55,
+      baby: "Lips, eyebrows, and eyelids are formed. Fingerprints are developing. Viability — survival outside the womb with intensive support — is now approaching.",
+      mom: "Kicks are stronger and more regular. Swollen ankles, stretch marks, and a popped belly button may appear. Sleep gets harder to find." },
+    { week: "Week 26",   trimester: 2, emoji: "🌽", size: "Ear of corn", cm: "35 cm",   progress: 65,
+      baby: "Lungs begin practicing breathing movements. The brain develops rapidly. The baby responds to light and sound through the belly. Eyes begin to open.",
+      mom: "Glucose Challenge Test (GD screening) is done this week. Heartburn often intensifies. Braxton Hicks 'practice' contractions may become noticeable." },
+    { week: "Week 28",   trimester: 3, emoji: "🍆", size: "Eggplant", cm: "37 cm",   progress: 70,
+      baby: "The brain forms complex folds. Eyes are open and blinking. The baby can now dream during REM sleep. Fat accumulation accelerates to prepare for warmth after birth.",
+      mom: "Kick counting begins now. Braxton Hicks contractions increase. Prenatal visits move to every 2 weeks. You may feel short of breath." },
+    { week: "Week 32",   trimester: 3, emoji: "🎃", size: "Butternut squash", cm: "42 cm",   progress: 80,
+      baby: "All five senses are functioning. The baby is practicing breathing movements. Most babies turn head-down now. Fingernails have grown to the fingertip.",
+      mom: "Shortness of breath as the baby pushes up into your ribcage. Pelvic pressure increases. Colostrum (early breast milk) may begin leaking." },
+    { week: "Week 36",   trimester: 3, emoji: "🥬", size: "Head of lettuce", cm: "47 cm",   progress: 90,
+      baby: "Lungs are nearly mature. The baby sheds lanugo (body hair) and vernix (protective skin coating). Gaining about half a pound every week now.",
+      mom: "GBS swab done this week. 'Lightening' — the baby drops lower into the pelvis — may bring heartburn relief. Weekly appointments begin now." },
+    { week: "Week 40",   trimester: 3, emoji: "🍉", size: "Watermelon", cm: "51 cm",   progress: 100,
+      baby: "Fully developed and ready for birth. Lungs are completely mature. All newborn reflexes are in place. The placenta is aging and the baby is running out of room.",
+      mom: "Full term. Watch for labor signs: regular contractions getting closer, water breaking, bloody show. Your due date is an estimate — ±2 weeks is normal." },
+  ];
 
   const navItems = [
     { id: "planning", label: "Planning & Confirmation", icon: CalendarHeart },
@@ -288,180 +337,139 @@ const PregnancyGuide = () => {
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Your Baby Week by Week</h2>
             </div>
-            <p className="text-lg text-muted-foreground leading-loose mb-10">
-              One of the most powerful things you can do during pregnancy is understand what's happening inside your body at every stage — for you AND your baby. Each entry below tells you your baby's approximate size, what they're developing, and what you might be experiencing as their mother.
+            <p className="text-lg text-muted-foreground leading-loose mb-8">
+              Tap any week below to see exactly what's happening — how big your baby is, what they're developing, and what you might be feeling. Every pregnancy is a journey, and you deserve to know every step.
             </p>
 
-            {/* First Trimester Weeks */}
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 flex items-center justify-center text-sm font-bold border border-emerald-200">1</span>
-                First Trimester — Weeks 4–12
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {[
-                  {
-                    week: "Week 4", size: "Poppy seed (1mm)", emoji: "🌱",
-                    baby: "Implantation is complete. The embryo is forming three layers: the ectoderm (skin, brain), mesoderm (heart, muscles), and endoderm (organs). The amniotic sac is forming.",
-                    mom: "You may notice a missed period. Light spotting (implantation bleeding) is normal. Breasts may feel tender."
-                  },
-                  {
-                    week: "Week 5", size: "Sesame seed (2mm)", emoji: "🌿",
-                    baby: "The heart begins beating — a small flicker visible on early ultrasound. The neural tube (future brain and spinal cord) is forming. Arm and leg buds appear.",
-                    mom: "Nausea often begins now. Fatigue hits hard as your body produces massive amounts of hCG and progesterone."
-                  },
-                  {
-                    week: "Week 6", size: "Lentil (6mm)", emoji: "🫘",
-                    baby: "The heartbeat is now detectable by ultrasound (~100–160 bpm). Eyes, ears, and nostrils are beginning to form. The brain is developing rapidly.",
-                    mom: "Nausea often peaks. Frequent urination begins as the uterus pushes on the bladder. Food aversions and smell sensitivity are common."
-                  },
-                  {
-                    week: "Week 8", size: "Raspberry (1.6 cm)", emoji: "🫐",
-                    baby: "All major organs and structures are now present in early form. Fingers and toes are forming. The embryo begins to move — though you won't feel it yet.",
-                    mom: "Your uterus is now the size of a grapefruit. Heartburn may begin. You may feel bloated and constipated due to progesterone slowing digestion."
-                  },
-                  {
-                    week: "Week 10", size: "Strawberry (3 cm)", emoji: "🍓",
-                    baby: "Now officially called a fetus. All vital organs are formed. Tiny fingernails are growing. The baby can make small movements and swallow amniotic fluid.",
-                    mom: "The worst nausea often begins to ease around now. NIPT blood test is available. Emotional changes — anxiety, joy, fear — are all completely normal."
-                  },
-                  {
-                    week: "Week 12", size: "Lime (5–6 cm)", emoji: "🍋",
-                    baby: "The fetus has a fully formed face and can open and close its fists. Reflexes are developing. The kidneys are producing urine. The risk of miscarriage drops significantly.",
-                    mom: "End of the first trimester — the hardest part for many mothers. Nausea usually improves. Your bump may start to show. Nuchal Translucency ultrasound happens this week."
-                  },
-                ].map((w) => (
-                  <div key={w.week} className="bg-card border border-border rounded-2xl p-5">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-3xl">{w.emoji}</span>
-                      <div>
-                        <h4 className="font-bold text-foreground text-base">{w.week}</h4>
-                        <span className="text-xs text-primary font-semibold bg-primary/10 px-2 py-0.5 rounded-full">Size: {w.size}</span>
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <div>
-                        <p className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">👶 Baby</p>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{w.baby}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">🤱 You</p>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{w.mom}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+            {/* Trimester Tab Jumps */}
+            <div className="flex gap-3 mb-6 flex-wrap">
+              {[
+                { label: "1st Trimester", color: "bg-emerald-100 text-emerald-700 border-emerald-300 hover:bg-emerald-200", idx: 0 },
+                { label: "2nd Trimester", color: "bg-blue-100 text-blue-700 border-blue-300 hover:bg-blue-200", idx: 6 },
+                { label: "3rd Trimester", color: "bg-purple-100 text-purple-700 border-purple-300 hover:bg-purple-200", idx: 11 },
+              ].map((t) => (
+                <button key={t.label} onClick={() => setSelectedWeekIdx(t.idx)}
+                  className={`px-4 py-1.5 rounded-full border text-sm font-semibold transition-all ${t.color}`}>
+                  {t.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Scrollable Week Timeline */}
+            <div className="relative mb-8">
+              <div className="overflow-x-auto pb-4" style={{ scrollbarWidth: "none" }}>
+                <div className="flex items-center gap-0 min-w-max px-2">
+                  {weekData.map((w, i) => {
+                    const tColor = w.trimester === 1 ? "bg-emerald-500" : w.trimester === 2 ? "bg-blue-500" : "bg-purple-500";
+                    const tColorLight = w.trimester === 1 ? "bg-emerald-100 border-emerald-300" : w.trimester === 2 ? "bg-blue-100 border-blue-300" : "bg-purple-100 border-purple-300";
+                    const tColorActive = w.trimester === 1 ? "bg-emerald-500 border-emerald-600 shadow-emerald-200" : w.trimester === 2 ? "bg-blue-500 border-blue-600 shadow-blue-200" : "bg-purple-500 border-purple-600 shadow-purple-200";
+                    const isSelected = i === selectedWeekIdx;
+                    return (
+                      <React.Fragment key={w.week}>
+                        {i > 0 && (
+                          <div className={`h-0.5 w-8 shrink-0 ${i <= selectedWeekIdx ? tColor : "bg-border"} transition-colors duration-300`} />
+                        )}
+                        <button
+                          onClick={() => setSelectedWeekIdx(i)}
+                          className={`flex flex-col items-center gap-1 shrink-0 transition-all duration-200 group`}
+                        >
+                          <span className={`text-xl transition-transform duration-200 ${isSelected ? "scale-125" : "group-hover:scale-110"}`}>
+                            {w.emoji}
+                          </span>
+                          <div className={`w-3 h-3 rounded-full border-2 transition-all duration-200 ${isSelected ? `${tColorActive} shadow-md scale-125` : `${tColorLight}`}`} />
+                          <span className={`text-[10px] font-semibold whitespace-nowrap transition-colors ${isSelected ? "text-foreground" : "text-muted-foreground"}`}>
+                            {w.week}
+                          </span>
+                        </button>
+                      </React.Fragment>
+                    );
+                  })}
+                </div>
               </div>
             </div>
 
-            {/* Second Trimester Weeks */}
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center text-sm font-bold border border-blue-200">2</span>
-                Second Trimester — Weeks 13–27
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {[
-                  {
-                    week: "Week 14", size: "Peach (8 cm)", emoji: "🍑",
-                    baby: "The fetus can make facial expressions — squinting, frowning, grimacing. Lanugo (fine hair) begins covering the body for warmth. The thyroid gland is producing hormones.",
-                    mom: "Energy returns for most women! The 'honeymoon phase' begins. Nausea typically resolves. Your bump is becoming more visible."
-                  },
-                  {
-                    week: "Week 16", size: "Avocado (11–12 cm)", emoji: "🥑",
-                    baby: "The baby can hear sounds — your heartbeat, your voice, music. Eyes can move side to side behind closed lids. Bones are hardening.",
-                    mom: "You may feel the first faint movements — like gentle flutters or bubbles. This is called 'quickening.' Your round ligament may cause brief sharp pains as it stretches."
-                  },
-                  {
-                    week: "Week 18–20", size: "Banana (14–16 cm)", emoji: "🍌",
-                    baby: "The anatomy scan happens this week — a detailed ultrasound examining every major organ. Sex can be determined if desired. The baby has a sleep/wake cycle.",
-                    mom: "The anatomy scan is a major milestone. You'll see your baby's face, heart, spine, and limbs in detail. Many parents find out the sex here."
-                  },
-                  {
-                    week: "Week 22", size: "Papaya (27 cm)", emoji: "🍈",
-                    baby: "The baby's lips, eyebrows, and eyelids are formed. Fingerprints are developing. Viability — the point where survival outside the womb is possible with intensive support — is approaching.",
-                    mom: "Kicks are now strong and regular. Backaches, swollen ankles, and stretch marks may appear. Your belly button may pop out."
-                  },
-                  {
-                    week: "Week 24–26", size: "Ear of corn (30–35 cm)", emoji: "🌽",
-                    baby: "The lungs begin practicing breathing movements. The brain is developing rapidly. The baby responds to light and sound. Eyes begin to open.",
-                    mom: "Glucose Challenge Test (GD screening) happens around week 24–28. Heartburn often intensifies. Sleep gets harder as the belly grows."
-                  },
-                ].map((w) => (
-                  <div key={w.week} className="bg-card border border-border rounded-2xl p-5">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-3xl">{w.emoji}</span>
+            {/* Detail Card */}
+            {(() => {
+              const w = weekData[selectedWeekIdx];
+              const trimLabel = w.trimester === 1 ? "First Trimester" : w.trimester === 2 ? "Second Trimester" : "Third Trimester";
+              const trimBg = w.trimester === 1 ? "from-emerald-50 to-emerald-50/0 dark:from-emerald-950/20" : w.trimester === 2 ? "from-blue-50 to-blue-50/0 dark:from-blue-950/20" : "from-purple-50 to-purple-50/0 dark:from-purple-950/20";
+              const trimBadge = w.trimester === 1 ? "bg-emerald-100 text-emerald-700" : w.trimester === 2 ? "bg-blue-100 text-blue-700" : "bg-purple-100 text-purple-700";
+              const trimBar = w.trimester === 1 ? "bg-emerald-500" : w.trimester === 2 ? "bg-blue-500" : "bg-purple-500";
+              return (
+                <div className={`bg-gradient-to-br ${trimBg} border border-border rounded-3xl overflow-hidden shadow-sm`}>
+                  {/* Top strip */}
+                  <div className="flex items-center justify-between px-6 pt-6 pb-4 flex-wrap gap-3">
+                    <div className="flex items-center gap-3">
+                      <span className="text-6xl md:text-8xl select-none">{w.emoji}</span>
                       <div>
-                        <h4 className="font-bold text-foreground text-base">{w.week}</h4>
-                        <span className="text-xs text-primary font-semibold bg-primary/10 px-2 py-0.5 rounded-full">Size: {w.size}</span>
+                        <h3 className="text-2xl md:text-3xl font-extrabold text-foreground">{w.week}</h3>
+                        <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${trimBadge}`}>{trimLabel}</span>
                       </div>
                     </div>
-                    <div className="space-y-2">
-                      <div>
-                        <p className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">👶 Baby</p>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{w.baby}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">🤱 You</p>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{w.mom}</p>
-                      </div>
+                    <div className="text-right">
+                      <p className="text-4xl md:text-5xl font-black text-foreground">{w.cm}</p>
+                      <p className="text-sm text-muted-foreground font-medium">baby's length</p>
+                      <p className="text-base font-semibold text-foreground mt-0.5">≈ {w.size}</p>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Third Trimester Weeks */}
-            <div>
-              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 flex items-center justify-center text-sm font-bold border border-purple-200">3</span>
-                Third Trimester — Weeks 28–40+
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {[
-                  {
-                    week: "Week 28", size: "Eggplant (37 cm)", emoji: "🍆",
-                    baby: "The brain is forming complex folds. The eyes are open. The baby can now dream during REM sleep. Fat accumulation accelerates for warmth after birth.",
-                    mom: "Kick counting begins. Braxton Hicks contractions may feel more noticeable. Visits increase to every 2 weeks."
-                  },
-                  {
-                    week: "Week 32", size: "Butternut squash (42 cm)", emoji: "🎃",
-                    baby: "All five senses are functioning. The baby is practicing breathing. Most babies are now in a head-down position. Fingernails have grown to the fingertip.",
-                    mom: "Shortness of breath as the baby pushes up into your ribcage. Pelvic pressure increases. Colostrum (early breast milk) may leak."
-                  },
-                  {
-                    week: "Week 36–37", size: "Head of romaine lettuce (47 cm)", emoji: "🥬",
-                    baby: "Lungs are nearly mature. The baby sheds lanugo (the fine body hair) and vernix (the protective coating on skin). Gaining about half a pound per week.",
-                    mom: "Group B Strep (GBS) swab done this week. 'Lightning' — the baby drops lower into the pelvis — may bring relief from heartburn. Weekly appointments begin."
-                  },
-                  {
-                    week: "Week 39–40", size: "Watermelon (50–52 cm)", emoji: "🍉",
-                    baby: "Fully developed and ready for birth. The placenta is being maintained but aging. The lungs are fully mature. All reflexes needed for newborn life are in place.",
-                    mom: "You are at full term. Watch for labor signs: regular contractions, water breaking, bloody show. Your due date is an estimate — labor within 2 weeks either side is normal."
-                  },
-                ].map((w) => (
-                  <div key={w.week} className="bg-card border border-border rounded-2xl p-5">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-3xl">{w.emoji}</span>
-                      <div>
-                        <h4 className="font-bold text-foreground text-base">{w.week}</h4>
-                        <span className="text-xs text-primary font-semibold bg-primary/10 px-2 py-0.5 rounded-full">Size: {w.size}</span>
-                      </div>
+                  {/* Progress bar */}
+                  <div className="px-6 mb-6">
+                    <div className="flex justify-between text-xs text-muted-foreground mb-1.5 font-medium">
+                      <span>Pregnancy progress</span>
+                      <span>{w.progress}% complete</span>
                     </div>
-                    <div className="space-y-2">
-                      <div>
-                        <p className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">👶 Baby</p>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{w.baby}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">🤱 You</p>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{w.mom}</p>
-                      </div>
+                    <div className="h-3 bg-border rounded-full overflow-hidden">
+                      <div
+                        className={`h-full rounded-full ${trimBar} transition-all duration-500`}
+                        style={{ width: `${w.progress}%` }}
+                      />
+                    </div>
+                    <div className="flex justify-between text-[10px] text-muted-foreground/60 mt-1">
+                      <span>Week 4</span>
+                      <span>Week 40</span>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
+
+                  {/* Baby + Mom columns */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-border">
+                    <div className="p-6 md:border-r border-border">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-2xl">👶</span>
+                        <h4 className="font-bold text-foreground text-base uppercase tracking-wide text-sm">Baby's Development</h4>
+                      </div>
+                      <p className="text-base text-foreground/80 leading-relaxed">{w.baby}</p>
+                    </div>
+                    <div className="p-6 border-t md:border-t-0 border-border">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-2xl">🤱</span>
+                        <h4 className="font-bold text-foreground text-base uppercase tracking-wide text-sm">How You May Feel</h4>
+                      </div>
+                      <p className="text-base text-foreground/80 leading-relaxed">{w.mom}</p>
+                    </div>
+                  </div>
+
+                  {/* Navigation arrows */}
+                  <div className="flex justify-between items-center px-6 py-4 border-t border-border">
+                    <button
+                      onClick={() => setSelectedWeekIdx(Math.max(0, selectedWeekIdx - 1))}
+                      disabled={selectedWeekIdx === 0}
+                      className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                    >
+                      ← {selectedWeekIdx > 0 ? weekData[selectedWeekIdx - 1].week : ""}
+                    </button>
+                    <span className="text-xs text-muted-foreground">{selectedWeekIdx + 1} of {weekData.length}</span>
+                    <button
+                      onClick={() => setSelectedWeekIdx(Math.min(weekData.length - 1, selectedWeekIdx + 1))}
+                      disabled={selectedWeekIdx === weekData.length - 1}
+                      className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                    >
+                      {selectedWeekIdx < weekData.length - 1 ? weekData[selectedWeekIdx + 1].week : ""} →
+                    </button>
+                  </div>
+                </div>
+              );
+            })()}
           </section>
 
           {/* SECTION: SECOND TRIMESTER */}

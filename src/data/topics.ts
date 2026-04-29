@@ -35,13 +35,13 @@ export const trendingTopics: Topic[] = [
       "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=600&h=400&fit=crop",
   },
   {
-    slug: "maternal-health-and-race",
-    title: "Maternal Health and Race: What You Should Know",
+    slug: "nutrition-during-pregnancy",
+    title: "Eating Well During Pregnancy: A Complete Guide",
     description:
-      "Exploring the disparities in maternal healthcare outcomes across racial and ethnic groups, and what can be done.",
-    category: "Diverse Voices",
+      "What to eat, what to avoid, and how your nutritional needs shift each trimester. Evidence-based guidance from dietitians and OB-GYNs.",
+    category: "Professional Advice",
     image:
-      "https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&h=400&fit=crop",
   },
   {
     slug: "birth-plan-preparation",
@@ -208,44 +208,50 @@ export const topicHubContent: Record<
       },
     ],
   },
-  "maternal-health-and-race": {
-    title: "Maternal Health and Race: What You Should Know",
+  "nutrition-during-pregnancy": {
+    title: "Eating Well During Pregnancy: A Complete Guide",
     introduction:
-      "Black mothers in the United States are roughly 3-4 times more likely to die from pregnancy-related complications than white mothers. This hub explores the systemic factors, personal stories, and advocacy efforts working to close this gap.",
+      "What you eat during pregnancy directly affects how your baby grows and how you feel. This hub brings together dietitian advice, OB-GYN recommendations, and real experiences to help every mother eat well through every trimester.",
     expertGuidance: [
       {
-        title: "Understanding Maternal Mortality Disparities",
+        title: "Key Nutrients Every Pregnant Mother Needs",
         summary:
-          "A public health researcher breaks down the data and structural factors behind racial disparities in maternal outcomes.",
+          "Folic acid, iron, calcium, DHA, and iodine — why each matters, how much you need, and which foods are the best sources.",
       },
       {
-        title: "Implicit Bias in Healthcare Settings",
+        title: "Foods to Avoid and Why",
         summary:
-          "How unconscious biases affect the care Black and Brown women receive, and what institutions can do about it.",
+          "A clear, science-backed list of what to skip during pregnancy: raw fish, deli meats, unpasteurized cheeses, high-mercury fish, and more.",
+      },
+      {
+        title: "Managing Nausea While Still Eating Enough",
+        summary:
+          "Practical strategies from dietitians for getting adequate nutrition even when severe nausea makes eating feel impossible.",
       },
     ],
     realStories: [
       {
-        title: "My Pain Was Dismissed — Twice",
+        title: "How I Ate Healthy Despite Constant Nausea",
         summary:
-          "A Black mother recounts how her symptoms were repeatedly minimized, and how she had to advocate fiercely for her own care.",
+          "A mother shares the foods and tricks that helped her stay nourished through a difficult first trimester.",
+        anonymous: true,
       },
       {
-        title: "Finding a Provider Who Looked Like Me",
+        title: "Managing Gestational Diabetes Through Diet",
         summary:
-          "The difference it made to find a culturally concordant care team, and why representation matters in healthcare.",
+          "One mother's experience learning to balance blood sugar through food choices, and how it changed her relationship with eating.",
       },
     ],
     resources: [
       {
-        title: "Black Mamas Matter Alliance",
-        url: "https://blackmamasmatter.org/",
-        type: "Organization",
+        title: "ACOG — Nutrition During Pregnancy",
+        url: "https://www.acog.org/womens-health/faqs/nutrition-during-pregnancy",
+        type: "Guide",
       },
       {
-        title: "CDC — Racial and Ethnic Disparities in Pregnancy-Related Deaths",
-        url: "https://www.cdc.gov/maternal-mortality/",
-        type: "Data",
+        title: "March of Dimes — Eating Right During Pregnancy",
+        url: "https://www.marchofdimes.org/find-support/topics/pregnancy/eating-right-during-pregnancy",
+        type: "Guide",
       },
     ],
   },

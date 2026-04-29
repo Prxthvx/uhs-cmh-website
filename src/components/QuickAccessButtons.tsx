@@ -4,7 +4,6 @@ import {
   Baby,
   Heart,
   MessageCircle,
-  Rainbow,
   HandHeart,
 } from "lucide-react";
 
@@ -28,16 +27,10 @@ const quickLinks = [
     color: "bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100",
   },
   {
-    label: "I'm Looking for LGBTQ+ Resources",
-    icon: Rainbow,
-    to: "/diverse-voices",
-    color: "bg-violet-50 text-violet-700 border-violet-200 hover:bg-violet-100",
-  },
-  {
-    label: "I Want to Learn About Black Maternal Health",
+    label: "I Need Nutrition & Diet Guidance",
     icon: HandHeart,
-    to: "/topics/maternal-health-and-race",
-    color: "bg-sky-50 text-sky-700 border-sky-200 hover:bg-sky-100",
+    to: "/pregnancy-guide#second-trimester",
+    color: "bg-violet-50 text-violet-700 border-violet-200 hover:bg-violet-100",
   },
 ];
 

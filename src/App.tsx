@@ -11,7 +11,6 @@ import MythBustersPage from "./pages/MythBustersPage";
 import PregnancyGuide from "./pages/PregnancyGuide";
 import RealStoriesPage from "./pages/RealStoriesPage";
 import ProfessionalAdvicePage from "./pages/ProfessionalAdvicePage";
-import DiverseVoicesPage from "./pages/DiverseVoicesPage";
 import SupportResourcesPage from "./pages/SupportResourcesPage";
 import TopicHubPage from "./pages/TopicHubPage";
 import VideoViewPage from "./pages/VideoViewPage";
@@ -34,7 +33,6 @@ const App = () => (
           <Route path="/pregnancy-guide" element={<PregnancyGuide />} />
           <Route path="/real-stories" element={<RealStoriesPage />} />
           <Route path="/professional-advice" element={<ProfessionalAdvicePage />} />
-          <Route path="/diverse-voices" element={<DiverseVoicesPage />} />
           <Route path="/support" element={<SupportResourcesPage />} />
           <Route path="/topics/:slug" element={<TopicHubPage />} />
           <Route path="/video/:id" element={<VideoViewPage />} />
