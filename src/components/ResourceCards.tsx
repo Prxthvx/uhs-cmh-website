@@ -72,7 +72,7 @@ const ResourceCards = () => {
             <motion.div
               variants={itemVariants}
               key={stage.id}
-              onClick={() => navigate(`/resources#${stage.id}`)}
+              onClick={() => navigate(`/pregnancy-guide#${stage.id}`)}
               className="group relative w-full h-[340px] md:h-[320px] cursor-pointer [perspective:1000px]"
             >
               <div className="absolute inset-0 w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">

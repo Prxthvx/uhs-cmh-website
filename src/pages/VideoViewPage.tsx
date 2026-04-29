@@ -4,6 +4,7 @@ import BackToTop from "@/components/BackToTop";
 import { motion } from "framer-motion";
 import { useParams, useNavigate } from "react-router-dom";
 import { videos } from "@/data/videos";
+import { useState } from "react";
 import {
   Play,
   Clock,
@@ -18,6 +19,7 @@ import { Button } from "@/components/ui/button";
 const VideoViewPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [playing, setPlaying] = useState(false);
 
   const video = videos.find((v) => v.id === id);
   const relatedVideos = video
@@ -60,34 +62,50 @@ const VideoViewPage = () => {
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Main Content */}
             <div className="flex-1">
-              {/* Video Player Placeholder */}
+              {/* Video Player */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
                 className="relative aspect-video bg-foreground/5 rounded-2xl overflow-hidden shadow-lg mb-6"
               >
-                <img
-                  src={video.thumbnail}
-                  alt={video.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-foreground/30 flex items-center justify-center">
-                  <button className="w-20 h-20 rounded-full border-[3px] border-white/80 flex items-center justify-center backdrop-blur-sm bg-white/10 hover:scale-110 hover:bg-white/20 transition-all duration-500 group">
-                    <Play
-                      className="text-white ml-1 group-hover:scale-110 transition-transform"
-                      size={32}
-                      fill="white"
-                      fillOpacity={0.9}
+                {playing ? (
+                  <iframe
+                    className="w-full h-full"
+                    src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0`}
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                ) : (
+                  <>
+                    <img
+                      src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                      alt={video.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => { (e.target as HTMLImageElement).src = video.thumbnail; }}
                     />
-                  </button>
-                </div>
-
-                {/* Duration */}
-                <div className="absolute bottom-4 right-4 px-3 py-1.5 bg-foreground/70 text-white text-sm font-medium rounded-lg flex items-center gap-1.5 backdrop-blur-sm">
-                  <Clock size={14} />
-                  {video.duration}
-                </div>
+                    <div className="absolute inset-0 bg-foreground/30 flex items-center justify-center">
+                      <button
+                        onClick={() => setPlaying(true)}
+                        className="w-20 h-20 rounded-full border-[3px] border-white/80 flex items-center justify-center backdrop-blur-sm bg-white/10 hover:scale-110 hover:bg-white/20 transition-all duration-500 group"
+                        aria-label="Play video"
+                      >
+                        <Play
+                          className="text-white ml-1 group-hover:scale-110 transition-transform"
+                          size={32}
+                          fill="white"
+                          fillOpacity={0.9}
+                        />
+                      </button>
+                    </div>
+                    {/* Duration */}
+                    <div className="absolute bottom-4 right-4 px-3 py-1.5 bg-foreground/70 text-white text-sm font-medium rounded-lg flex items-center gap-1.5 backdrop-blur-sm">
+                      <Clock size={14} />
+                      {video.duration}
+                    </div>
+                  </>
+                )}
               </motion.div>
 
               {/* Video Info */}
@@ -195,9 +213,10 @@ const VideoViewPage = () => {
                         >
                           <div className="w-32 h-20 rounded-xl overflow-hidden shrink-0 relative">
                             <img
-                              src={related.thumbnail}
+                              src={`https://img.youtube.com/vi/${related.youtubeId}/mqdefault.jpg`}
                               alt={related.title}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              onError={(e) => { (e.target as HTMLImageElement).src = related.thumbnail; }}
                             />
                             <div className="absolute inset-0 bg-foreground/10 group-hover:bg-foreground/20 transition-colors" />
                             <div className="absolute inset-0 flex items-center justify-center">

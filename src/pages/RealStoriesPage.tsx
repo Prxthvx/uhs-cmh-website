@@ -112,9 +112,10 @@ const RealStoriesPage = () => {
                 {/* Thumbnail */}
                 <div className="relative aspect-video rounded-2xl overflow-hidden shadow-sm group-hover:shadow-lg transition-shadow duration-500 mb-4">
                   <img
-                    src={video.thumbnail}
+                    src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
                     alt={video.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    onError={(e) => { (e.target as HTMLImageElement).src = video.thumbnail; }}
                   />
                   <div className="absolute inset-0 bg-foreground/10 group-hover:bg-foreground/25 transition-colors duration-500" />
 
