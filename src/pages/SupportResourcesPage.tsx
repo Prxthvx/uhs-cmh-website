@@ -17,6 +17,7 @@ import {
   Briefcase,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const emergencyHotlines = [
   {
@@ -117,24 +118,52 @@ const advocacyTips = [
 
 const appRecommendations = [
   {
-    name: "Headspace",
-    description: "Guided meditation and mindfulness for stress management and mental wellness.",
-    category: "Mental Health",
+    name: "Ovia Pregnancy Tracker",
+    description: "Week-by-week fetal development, symptom logging, kick counter, and appointment reminders — published by Labcorp.",
+    category: "Pregnancy Tracking",
+    url: "https://www.oviahealth.com/",
+    ios: "https://apps.apple.com/us/app/ovia-pregnancy-tracker/id719891428",
+    android: "https://play.google.com/store/apps/details?id=com.ovuline.pregnancy",
   },
   {
     name: "What to Expect",
-    description: "Week-by-week pregnancy tracking with expert-reviewed content and community forums.",
-    category: "Pregnancy Tracking",
+    description: "Week-by-week pregnancy guide with expert-reviewed content, birth club forums, and a newborn tracker.",
+    category: "Pregnancy Guide",
+    url: "https://www.whattoexpect.com/apps/",
+    ios: "https://apps.apple.com/us/app/what-to-expect-pregnancy/id527065063",
+    android: "https://play.google.com/store/apps/details?id=com.whattoexpect.android",
   },
   {
-    name: "Ovia Health",
-    description: "Personalized health insights for fertility, pregnancy, and parenting.",
-    category: "Health Tracking",
+    name: "Peanut",
+    description: "A social network for mothers — find local moms, share experiences, and get peer support through pregnancy and beyond.",
+    category: "Community",
+    url: "https://www.peanut-app.io/",
+    ios: "https://apps.apple.com/us/app/peanut-meet-moms-mom-friends/id1066328832",
+    android: "https://play.google.com/store/apps/details?id=io.peanut.android",
+  },
+  {
+    name: "Headspace",
+    description: "Guided meditation and mindfulness sessions specifically designed for pregnancy anxiety, stress, and sleep disruption.",
+    category: "Mental Health",
+    url: "https://www.headspace.com/",
+    ios: "https://apps.apple.com/us/app/headspace-sleep-meditation/id493145008",
+    android: "https://play.google.com/store/apps/details?id=com.getsomeheadspace.android",
   },
   {
     name: "Calm",
-    description: "Sleep stories, breathing exercises, and relaxation tools for stressed parents.",
+    description: "Sleep stories, breathing exercises, and relaxation tools designed to reduce anxiety for pregnant women and new parents.",
     category: "Wellness",
+    url: "https://www.calm.com/",
+    ios: "https://apps.apple.com/us/app/calm/id571800810",
+    android: "https://play.google.com/store/apps/details?id=com.calm.android",
+  },
+  {
+    name: "Full Term",
+    description: "A simple, clear contraction timer to track frequency and duration during early labor — know exactly when to call your provider.",
+    category: "Labor Tool",
+    url: "https://www.fulltermapp.com/",
+    ios: "https://apps.apple.com/us/app/full-term-contraction-timer/id489590629",
+    android: null,
   },
 ];
 
@@ -374,29 +403,35 @@ const SupportResourcesPage = () => {
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {appRecommendations.map((app, i) => (
-              <motion.div
+              <motion.a
                 key={i}
+                href={app.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: i * 0.08 }}
-                className="bg-card border border-border rounded-xl p-5 text-center hover:shadow-md transition-shadow"
+                className="bg-card border border-border rounded-xl p-5 flex flex-col hover:shadow-md hover:border-primary/30 transition-all duration-200 group"
               >
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
                   <Smartphone size={20} className="text-primary" />
                 </div>
                 <span className="text-[10px] font-bold text-primary uppercase tracking-wider">
                   {app.category}
                 </span>
-                <h4 className="font-bold text-foreground mt-1 mb-2">
+                <h4 className="font-bold text-foreground mt-1 mb-2 group-hover:text-primary transition-colors">
                   {app.name}
                 </h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-xs text-muted-foreground leading-relaxed flex-1">
                   {app.description}
                 </p>
-              </motion.div>
+                <div className="flex items-center gap-1 mt-3 text-xs font-semibold text-primary">
+                  Visit website <ExternalLink size={11} />
+                </div>
+              </motion.a>
             ))}
           </div>
         </div>
@@ -435,7 +470,7 @@ const SupportResourcesPage = () => {
                 <h3 className="text-lg font-bold text-foreground">Insurance, Coverage & Maternity Leave</h3>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Contact your insurer early to understand the difference between preventive prenatal care coverages and high-deductible hospital delivery fees. Adding a newborn — called insurance "issuance" — is usually required within <strong>30 days of birth</strong>.
+                Contact your insurer early to understand the difference between preventive prenatal care coverages and hospital delivery fees. Adding a newborn to your plan is typically required within <strong>30–60 days of birth</strong> depending on your insurer — missing this window can leave your baby uninsured. Confirm your plan's exact deadline before your due date.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 The <strong>Family and Medical Leave Act (FMLA)</strong> protects your job for up to 12 unpaid weeks. Check whether your state offers paid family leave or short-term disability. File FMLA paperwork early in your third trimester to avoid last-minute stress.
@@ -492,8 +527,10 @@ const SupportResourcesPage = () => {
             Reach out to us directly and we'll help connect you with the
             right resources. You are not alone.
           </p>
-          <Button size="lg" className="gap-2 px-8">
-            Contact Us <ArrowRight size={16} />
+          <Button size="lg" className="gap-2 px-8" asChild>
+            <Link to="/contact">
+              Contact Us <ArrowRight size={16} />
+            </Link>
           </Button>
         </div>
       </section>
