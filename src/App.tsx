@@ -14,6 +14,7 @@ import SupportResourcesPage from "./pages/SupportResourcesPage";
 import TopicHubPage from "./pages/TopicHubPage";
 import VideoViewPage from "./pages/VideoViewPage";
 import CommunityPage from "./pages/CommunityPage";
+import ContactPage from "./pages/ContactPage";
 import Chatbot from "./components/Chatbot";
 
 const queryClient = new QueryClient();
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/topics/:slug" element={<TopicHubPage />} />
           <Route path="/video/:id" element={<VideoViewPage />} />
           <Route path="/community" element={<CommunityPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

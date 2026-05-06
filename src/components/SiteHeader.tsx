@@ -8,7 +8,7 @@ const navLinks = [
   { label: "Real Stories", href: "/real-stories" },
   { label: "Support", href: "/support" },
   { label: "Community", href: "/community" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const SiteHeader = () => {

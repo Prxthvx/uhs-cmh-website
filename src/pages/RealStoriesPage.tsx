@@ -53,16 +53,6 @@ const RealStoriesPage = () => {
             experiences from healthcare professionals, new parents, and mothers
             navigating postpartum life.
           </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <Button size="lg" className="px-8 gap-2">
-              <Play size={18} fill="currentColor" fillOpacity={0.9} />
-              Watch Featured Story
-            </Button>
-          </motion.div>
         </div>
       </section>
 
