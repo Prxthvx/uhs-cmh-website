@@ -4,7 +4,6 @@ import ResourceCards from "@/components/ResourceCards";
 import FeaturedVideos from "@/components/FeaturedVideos";
 import TrendingTopics from "@/components/TrendingTopics";
 import QuickAccessButtons from "@/components/QuickAccessButtons";
-import MythBustersGrid from "@/components/MythBustersGrid";
 import TransitBanner from "@/components/TransitBanner";
 
 import FAQSection from "@/components/FAQSection";
@@ -18,12 +17,10 @@ const Index = () => {
       <SiteHeader />
       <HeroSection />
       <FeaturedVideos />
+      <ResourceCards />
       <TrendingTopics />
       <QuickAccessButtons />
-      <ResourceCards />
-      <MythBustersGrid />
       <TransitBanner />
-
       <FAQSection />
       <ContactSection />
       <SiteFooter />

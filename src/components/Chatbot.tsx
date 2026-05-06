@@ -56,16 +56,6 @@ const Chatbot = () => {
           </Link>
         </span>
       );
-    } else if (lowerInput.includes("myth") || lowerInput.includes("fact") || lowerInput.includes("true")) {
-      responseText = (
-        <span>
-          Pregnancy is full of old wives' tales! Check out our{" "}
-          <Link to="/myth-busters" className="text-emerald-300 underline font-semibold" onClick={() => setIsOpen(false)}>
-            Myth Busters
-          </Link>{" "}
-          section to separate fact from fiction.
-        </span>
-      );
     } else {
       responseText = (
         <span>

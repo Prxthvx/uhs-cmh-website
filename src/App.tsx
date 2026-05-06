@@ -8,7 +8,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import AllResourcesPage from "./pages/AllResourcesPage";
 import TransitLogisticsPage from "./pages/TransitLogisticsPage";
-import MythBustersPage from "./pages/MythBustersPage";
 import PregnancyGuide from "./pages/PregnancyGuide";
 import RealStoriesPage from "./pages/RealStoriesPage";
 import SupportResourcesPage from "./pages/SupportResourcesPage";
@@ -32,7 +31,6 @@ const App = () => (
           <Route path="/resources" element={<Navigate to="/pregnancy-guide" replace />} />
           <Route path="/all-resources" element={<AllResourcesPage />} />
           <Route path="/transportation" element={<TransitLogisticsPage />} />
-          <Route path="/myth-busters" element={<MythBustersPage />} />
           <Route path="/pregnancy-guide" element={<PregnancyGuide />} />
           <Route path="/real-stories" element={<RealStoriesPage />} />
           <Route path="/support" element={<SupportResourcesPage />} />

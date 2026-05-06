@@ -42,9 +42,6 @@ const SiteFooter = () => {
               <Link to="/transportation" className="text-xs text-muted-foreground hover:text-primary transition-colors">
                 Transit & Shuttles
               </Link>
-              <Link to="/myth-busters" className="text-xs text-muted-foreground hover:text-primary transition-colors">
-                Myth Busters
-              </Link>
             </div>
           </div>
 

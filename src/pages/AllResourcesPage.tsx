@@ -9,7 +9,6 @@ import {
   MessageCircle,
   Users,
   Bus,
-  ShieldAlert,
   Phone,
   Stethoscope,
   Baby,
@@ -56,14 +55,6 @@ const resources = [
     icon: Bus,
     to: "/transportation",
     color: "blue",
-  },
-  {
-    label: "Pregnancy Myth Busters",
-    description:
-      "Separate medical fact from fiction — evidence-based answers to the most common pregnancy myths.",
-    icon: ShieldAlert,
-    to: "/myth-busters",
-    color: "purple",
   },
   {
     label: "Baby Week by Week",
