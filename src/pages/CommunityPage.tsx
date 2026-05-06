@@ -15,6 +15,7 @@ import {
   Shield,
   Users,
   Hash,
+  Trash2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -208,6 +209,7 @@ const CommunityPage = () => {
   const [replyContent, setReplyContent] = useState("");
   const [pseudonym] = useState(getOrCreatePseudonym);
   const [showGuidelines, setShowGuidelines] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
 
   // Load posts from localStorage, merge with seeds
   useEffect(() => {
@@ -303,6 +305,12 @@ const CommunityPage = () => {
           : p
       )
     );
+  };
+
+  const handleDeletePost = (postId: string) => {
+    setPosts((prev) => prev.filter((p) => p.id !== postId));
+    if (expandedPost === postId) setExpandedPost(null);
+    setConfirmDelete(null);
   };
 
   const getCategoryLabel = (key: string) =>
@@ -558,6 +566,7 @@ const CommunityPage = () => {
             </div>
           )}
 
+          <AnimatePresence mode="popLayout">
           {sortedPosts.map((post) => {
             const isExpanded = expandedPost === post.id;
 
@@ -566,8 +575,42 @@ const CommunityPage = () => {
                 key={post.id}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.97 }}
                 className="bg-card border border-border rounded-2xl overflow-hidden hover:shadow-md transition-shadow"
               >
+                {/* Inline delete confirmation bar */}
+                <AnimatePresence>
+                  {confirmDelete === post.id && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="flex items-center justify-between gap-3 px-5 py-3 bg-destructive/10 border-b border-destructive/20">
+                        <p className="text-sm font-medium text-destructive flex items-center gap-2">
+                          <Trash2 size={14} /> Delete this post permanently?
+                        </p>
+                        <div className="flex items-center gap-2 shrink-0">
+                          <button
+                            onClick={(e) => { e.stopPropagation(); setConfirmDelete(null); }}
+                            className="text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors px-3 py-1.5 rounded-lg hover:bg-secondary"
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            onClick={(e) => { e.stopPropagation(); handleDeletePost(post.id); }}
+                            className="text-xs font-semibold text-white bg-destructive hover:bg-destructive/90 transition-colors px-3 py-1.5 rounded-lg"
+                          >
+                            Yes, delete
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 {/* Post Header */}
                 <div
                   className="p-5 cursor-pointer"
@@ -596,12 +639,33 @@ const CommunityPage = () => {
                         {post.content}
                       </p>
                     </div>
+
+                    {/* Delete button — only for posts by the current user */}
+                    {post.author === pseudonym && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setConfirmDelete(confirmDelete === post.id ? null : post.id);
+                        }}
+                        title="Delete your post"
+                        className={`shrink-0 p-2 rounded-lg transition-colors ${
+                          confirmDelete === post.id
+                            ? "bg-destructive/10 text-destructive"
+                            : "text-muted-foreground/50 hover:text-destructive hover:bg-destructive/10"
+                        }`}
+                      >
+                        <Trash2 size={15} />
+                      </button>
+                    )}
                   </div>
 
                   {/* Post Meta */}
                   <div className="flex items-center gap-4 mt-3 text-xs text-muted-foreground">
                     <span className="font-medium text-foreground/70">
                       {post.author}
+                      {post.author === pseudonym && (
+                        <span className="ml-1.5 text-[10px] text-primary font-bold">(you)</span>
+                      )}
                     </span>
                     <button
                       onClick={(e) => {
@@ -721,6 +785,7 @@ const CommunityPage = () => {
               </motion.div>
             );
           })}
+          </AnimatePresence>
         </div>
       </section>
 
