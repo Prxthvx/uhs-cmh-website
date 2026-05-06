@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { videoCategories, videos } from "@/data/videos";
 
@@ -85,6 +85,16 @@ const FeaturedVideos = () => {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* View all button */}
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={() => navigate("/real-stories")}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary/30 text-sm font-medium text-primary hover:bg-primary/5 hover:border-primary transition-all duration-300"
+          >
+            View all stories <ArrowRight size={15} />
+          </button>
+        </div>
       </div>
     </section>
   );
