@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import uhsLogo from "@/assets/uhs-logo.svg";
 
+
 const SiteFooter = () => {
   return (
     <footer className="border-t-2 border-primary/20 bg-background">

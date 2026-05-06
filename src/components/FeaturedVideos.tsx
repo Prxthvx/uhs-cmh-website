@@ -1,10 +1,16 @@
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { videoCategories } from "@/data/videos";
+import { videoCategories, videos } from "@/data/videos";
 
 const FeaturedVideos = () => {
   const navigate = useNavigate();
+
+  // Pick the first video in each category to feature on the homepage
+  const featured = videoCategories.map((cat) => ({
+    cat,
+    video: videos.find((v) => v.category === cat.key),
+  }));
 
   return (
     <section className="py-16 md:py-24 bg-background">
@@ -26,7 +32,7 @@ const FeaturedVideos = () => {
           transition={{ staggerChildren: 0.15 }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
         >
-          {videoCategories.map((cat, i) => (
+          {featured.map(({ cat, video }, i) => (
             <motion.div
               key={cat.key}
               initial={{ opacity: 0, y: 20 }}
@@ -34,23 +40,26 @@ const FeaturedVideos = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="group cursor-pointer"
-              onClick={() =>
-                navigate(
-                  `/real-stories?category=${encodeURIComponent(cat.key)}`
-                )
-              }
+              onClick={() => video && navigate(`/video/${video.id}`)}
             >
-              {/* Category Title */}
+              {/* Category label */}
               <h3 className="text-sm font-bold text-primary uppercase tracking-widest text-center mb-4">
                 {cat.key}
               </h3>
 
-              {/* Thumbnail with Play Overlay */}
+              {/* Thumbnail with Play overlay */}
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-500">
                 <img
-                  src={cat.image}
-                  alt={cat.key}
+                  src={
+                    video
+                      ? `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`
+                      : cat.image
+                  }
+                  alt={video?.title || cat.key}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = cat.image;
+                  }}
                 />
 
                 {/* Dark overlay */}
@@ -69,9 +78,9 @@ const FeaturedVideos = () => {
                 </div>
               </div>
 
-              {/* Description */}
-              <p className="text-sm text-muted-foreground text-center mt-4 leading-relaxed px-2">
-                {cat.description}
+              {/* Video title */}
+              <p className="text-sm font-medium text-foreground text-center mt-4 leading-relaxed px-2 line-clamp-2">
+                {video?.title || cat.description}
               </p>
             </motion.div>
           ))}

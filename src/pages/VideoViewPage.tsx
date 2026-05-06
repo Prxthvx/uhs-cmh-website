@@ -150,17 +150,6 @@ const VideoViewPage = () => {
                   ))}
                 </div>
 
-                {/* Transcript placeholder */}
-                <div className="bg-card border border-border rounded-2xl p-6">
-                  <h3 className="font-bold text-foreground mb-3">
-                    Transcript
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Full transcript will be available when the video is
-                    published. We're committed to making all content accessible
-                    through written transcripts and captions.
-                  </p>
-                </div>
               </motion.div>
             </div>
 

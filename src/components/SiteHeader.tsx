@@ -1,6 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import uhsLogo from "@/assets/uhs-logo.svg";
 
 const navLinks = [
   { label: "Maternal Guide", href: "/pregnancy-guide" },
@@ -37,9 +38,7 @@ const SiteHeader = () => {
       <div className="container flex items-center justify-between py-3">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">M</span>
-          </div>
+          <img src={uhsLogo} alt="UHS Logo" className="h-8 w-auto" />
           <span className="font-semibold text-lg text-foreground">Maternal Health at CMH</span>
         </Link>
 
