@@ -2,7 +2,6 @@ import SiteHeader from "@/components/SiteHeader";
 import HeroSection from "@/components/HeroSection";
 import ResourceCards from "@/components/ResourceCards";
 import FeaturedVideos from "@/components/FeaturedVideos";
-import TrendingTopics from "@/components/TrendingTopics";
 import QuickAccessButtons from "@/components/QuickAccessButtons";
 import TransitBanner from "@/components/TransitBanner";
 
@@ -18,7 +17,6 @@ const Index = () => {
       <HeroSection />
       <FeaturedVideos />
       <ResourceCards />
-      <TrendingTopics />
       <QuickAccessButtons />
       <TransitBanner />
       <FAQSection />
