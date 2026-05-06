@@ -43,7 +43,7 @@ const SiteHeader = () => {
             alt="UHS Logo"
             className="h-9 w-auto"
           />
-          <span className="font-bold text-base md:text-lg text-foreground leading-tight">
+          <span className="font-normal text-lg text-primary">
             Maternal Health at CMH
           </span>
         </Link>
