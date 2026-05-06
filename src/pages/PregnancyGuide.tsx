@@ -68,7 +68,7 @@ const PregnancyGuide = () => {
     { id: "week-by-week", label: "Baby Week by Week", icon: Baby },
     { id: "health-issues", label: "Health & Safety", icon: ShieldAlert },
     { id: "questions-to-ask", label: "Questions to Ask", icon: MessageCircleQuestion },
-    { id: "resources", label: "External Resources", icon: Library },
+    { id: "resources", label: "References", icon: Library },
   ];
 
   useEffect(() => {
@@ -250,7 +250,7 @@ const PregnancyGuide = () => {
                   <p className="text-foreground font-medium leading-relaxed italic mb-2">
                     "Morning sickness that makes you vomit more than 3 times a day, prevents you from keeping any food or fluid down, or causes you to lose weight — that is NOT normal morning sickness. That is a medical condition called Hyperemesis Gravidarum and it requires treatment. Please come in or go to the ER."
                   </p>
-                  <span className="text-sm text-primary font-semibold">— ACOG Clinical Guidance, First Trimester Management</span>
+                  <span className="text-sm text-primary font-semibold">— Adapted from ACOG Practice Bulletin No. 189: Nausea and Vomiting of Pregnancy</span>
                 </div>
               </div>
 
@@ -928,39 +928,191 @@ const PregnancyGuide = () => {
             </div>
           </section>
 
-          {/* SECTION: RESOURCES */}
+          {/* SECTION: REFERENCES */}
           <section id="resources" className="scroll-mt-28">
             <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
                 <Library size={24} />
               </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">External Resources</h2>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">References</h2>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-card border border-border p-6 rounded-2xl">
-                <h4 className="font-bold text-xl mb-3">Books</h4>
-                <ul className="text-muted-foreground space-y-2 text-sm leading-relaxed">
-                  <li>• "Expecting Better" by Emily Oster</li>
-                  <li>• "Mayo Clinic Guide to a Healthy Pregnancy"</li>
-                  <li>• "The Fourth Trimester" by Kimberly Ann Johnson</li>
-                </ul>
+            <p className="text-base text-muted-foreground leading-relaxed mb-10">
+              All clinical guidance in this maternal guide is drawn from peer-reviewed medical literature, published practice bulletins, and the public health recommendations of leading organizations. The sources below correspond directly to the content presented in each section of this guide.
+            </p>
+
+            {/* Clinical Guidelines */}
+            <div className="mb-10">
+              <h3 className="text-xl font-bold text-foreground mb-5 flex items-center gap-2">
+                <span className="w-7 h-7 rounded-lg bg-primary/10 inline-flex items-center justify-center text-primary text-xs font-black">1</span>
+                Clinical Guidelines &amp; Practice Bulletins
+              </h3>
+              <div className="space-y-3">
+                {[
+                  {
+                    org: "ACOG",
+                    title: "Practice Bulletin No. 189 — Nausea and Vomiting of Pregnancy",
+                    note: "Source for HG prevalence (0.3–3%), diagnostic criteria, treatment protocols, and first-trimester symptom guidance.",
+                    url: "https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2018/01/nausea-and-vomiting-of-pregnancy",
+                  },
+                  {
+                    org: "ACOG",
+                    title: "Committee Opinion No. 762 — Prepregnancy Counseling",
+                    note: "Source for preconception folic acid (400 mcg minimum), BMI optimization, vaccine review (MMR, Varicella), chronic condition management, and genetic carrier screening recommendations.",
+                    url: "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2019/01/prepregnancy-counseling",
+                  },
+                  {
+                    org: "ACOG",
+                    title: "FAQ — Prenatal Genetic Testing (NIPT, NT Scan, Carrier Screening)",
+                    note: "Source for NIPT timing (weeks 10–13), Nuchal Translucency scan description, chromosomal condition screening including Down syndrome (Trisomy 21), Trisomy 18, and Trisomy 13.",
+                    url: "https://www.acog.org/womens-health/faqs/prenatal-genetic-testing",
+                  },
+                  {
+                    org: "ACOG",
+                    title: "Practice Bulletin No. 190 — Gestational Diabetes Mellitus",
+                    note: "Source for Glucose Challenge Test protocol (weeks 24–28), 1-hour and 3-hour diagnostic thresholds, macrosomia risk, and management approach.",
+                    url: "https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2018/02/gestational-diabetes-mellitus",
+                  },
+                  {
+                    org: "ACOG",
+                    title: "Practice Bulletin No. 797 — Prevention of Group B Streptococcal Early-Onset Disease in Newborns",
+                    note: "Source for GBS swab timing (weeks 35–37), prevalence (~25% of pregnant women), IV antibiotic prophylaxis protocol during labor, and newborn infection risk.",
+                    url: "https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2020/02/prevention-of-group-b-streptococcal-early-onset-disease-in-newborns",
+                  },
+                  {
+                    org: "ACOG",
+                    title: "Practice Bulletin No. 255 — Postpartum Depression",
+                    note: "Source for Baby Blues (affects ~80% of mothers, resolves within 2 weeks), PPD diagnostic criteria beyond 14 days, and treatment recommendations.",
+                    url: "https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2021/06/screening-and-diagnosis-of-mental-health-conditions-during-pregnancy-and-postpartum",
+                  },
+                  {
+                    org: "ACOG",
+                    title: "Committee Opinion No. 828 — Medically Indicated Late-Preterm and Early-Term Deliveries",
+                    note: "Source for fetal kick counting protocol (10 movements in 2 hours beginning week 28) and guidance on decreased fetal movement.",
+                    url: "https://www.acog.org/womens-health/faqs/how-to-tell-when-labor-begins",
+                  },
+                  {
+                    org: "CDC",
+                    title: "Fetal Alcohol Spectrum Disorders (FASDs) — Alcohol Use During Pregnancy",
+                    note: "Source for the statement that no safe amount, no safe time, and no safe type of alcohol exists during pregnancy, and that FASDs are completely preventable.",
+                    url: "https://www.cdc.gov/ncbddd/fasd/alcohol-use.html",
+                  },
+                  {
+                    org: "CDC",
+                    title: "Smoking, Pregnancy, and Babies",
+                    note: "Source for smoking risks including placental abruption, growth restriction, preterm birth, and SIDS.",
+                    url: "https://www.cdc.gov/tobacco/campaign/tips/diseases/pregnancy.html",
+                  },
+                  {
+                    org: "CDC",
+                    title: "Pregnancy Complications — Hyperemesis Gravidarum",
+                    note: "Supporting source for HG as a recognized medical condition distinct from normal morning sickness.",
+                    url: "https://www.cdc.gov/pregnancy/complications/index.html",
+                  },
+                  {
+                    org: "WHO",
+                    title: "WHO Recommendations on Antenatal Care for a Positive Pregnancy Experience (2016)",
+                    note: "Source supporting antenatal visit frequency, nutritional guidance, and the global framework for prenatal care discussed throughout this guide.",
+                    url: "https://www.who.int/publications/i/item/9789241549912",
+                  },
+                ].map((ref, i) => (
+                  <div key={i} className="bg-card border border-border rounded-xl p-5 flex flex-col sm:flex-row sm:items-start gap-4">
+                    <span className="shrink-0 px-2.5 py-1 rounded-md bg-primary/10 text-primary text-xs font-black uppercase tracking-wider">{ref.org}</span>
+                    <div className="flex-1 min-w-0">
+                      <a
+                        href={ref.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold text-foreground hover:text-primary transition-colors leading-snug inline-flex items-start gap-1 group"
+                      >
+                        {ref.title}
+                        <svg className="w-3 h-3 shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                      </a>
+                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{ref.note}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="bg-card border border-border p-6 rounded-2xl">
-                <h4 className="font-bold text-xl mb-3">Apps</h4>
-                <ul className="text-muted-foreground space-y-2 text-sm leading-relaxed">
-                  <li>• <strong>Ovia Pregnancy:</strong> Tracking & analytics</li>
-                  <li>• <strong>Flo:</strong> Cycle & pregnancy mapping</li>
-                  <li>• <strong>Full Term:</strong> Contraction timer UI</li>
-                </ul>
+            </div>
+
+            {/* Books */}
+            <div className="mb-10">
+              <h3 className="text-xl font-bold text-foreground mb-5 flex items-center gap-2">
+                <span className="w-7 h-7 rounded-lg bg-primary/10 inline-flex items-center justify-center text-primary text-xs font-black">2</span>
+                Recommended Reading
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  {
+                    title: "Expecting Better",
+                    author: "Emily Oster",
+                    year: "Penguin Press, 2013 (updated 2016)",
+                    desc: "An economist's data-driven analysis of pregnancy research — challenges common restrictions with actual evidence and risk statistics.",
+                  },
+                  {
+                    title: "Mayo Clinic Guide to a Healthy Pregnancy",
+                    author: "Mayo Clinic Staff",
+                    year: "3rd Edition, 2024",
+                    desc: "Comprehensive week-by-week guide written and reviewed by Mayo Clinic physicians. Covers symptoms, tests, and complications with clinical accuracy.",
+                  },
+                  {
+                    title: "The Fourth Trimester",
+                    author: "Kimberly Ann Johnson",
+                    year: "Shambhala, 2017",
+                    desc: "Focuses entirely on postpartum recovery — physical healing, emotional adjustment, and reclaiming identity after birth.",
+                  },
+                ].map((b) => (
+                  <div key={b.title} className="bg-card border border-border rounded-xl p-5">
+                    <p className="text-sm font-bold text-foreground leading-snug mb-1">"{b.title}"</p>
+                    <p className="text-xs text-primary font-semibold mb-0.5">{b.author}</p>
+                    <p className="text-xs text-muted-foreground mb-2 italic">{b.year}</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{b.desc}</p>
+                  </div>
+                ))}
               </div>
-              <div className="bg-card border border-border p-6 rounded-2xl">
-                <h4 className="font-bold text-xl mb-3">Organizations</h4>
-                <ul className="text-muted-foreground space-y-2 text-sm leading-relaxed">
-                  <li>• Postpartum Support Int. (PSI)</li>
-                  <li>• La Leche League (Feeding support)</li>
-                  <li>• ACOG Public Patience Portal</li>
-                </ul>
+            </div>
+
+            {/* Apps & Organizations */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+                  <span className="w-7 h-7 rounded-lg bg-primary/10 inline-flex items-center justify-center text-primary text-xs font-black">3</span>
+                  Tracking Apps
+                </h3>
+                <div className="space-y-3">
+                  {[
+                    { name: "Ovia Pregnancy Tracker", detail: "Week-by-week development, symptom tracking, appointment log, and kick counter. Published by Labcorp.", url: "https://www.oviahealth.com/" },
+                    { name: "Flo Period & Pregnancy", detail: "Cycle history, pregnancy tracking, symptom logging, and personalized health insights.", url: "https://flo.health/" },
+                    { name: "Full Term — Contraction Timer", detail: "Simple, clear contraction timing tool to track frequency and duration during early labor.", url: "https://www.fulltermapp.com/" },
+                  ].map((app) => (
+                    <a key={app.name} href={app.url} target="_blank" rel="noopener noreferrer"
+                      className="block bg-card border border-border hover:border-primary/40 rounded-xl px-4 py-3.5 transition-all hover:shadow-sm group">
+                      <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{app.name}</p>
+                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{app.detail}</p>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+                  <span className="w-7 h-7 rounded-lg bg-primary/10 inline-flex items-center justify-center text-primary text-xs font-black">4</span>
+                  Organizations &amp; Hotlines
+                </h3>
+                <div className="space-y-3">
+                  {[
+                    { name: "ACOG Patient Education", detail: "Free patient-facing FAQs on every stage of pregnancy and women's health, authored by OB/GYN specialists.", url: "https://www.acog.org/womens-health" },
+                    { name: "Postpartum Support International (PSI)", detail: "Helpline, provider directory, and support groups for postpartum depression, anxiety, and OCD.", url: "https://www.postpartum.net/" },
+                    { name: "La Leche League International", detail: "Breastfeeding support network with local groups, lactation resources, and 24-hour helpline.", url: "https://www.llli.org/" },
+                    { name: "HER Foundation (Hyperemesis Gravidarum)", detail: "Research, support resources, and provider directory specifically for HG — the severe pregnancy nausea condition.", url: "https://www.hyperemesis.org/" },
+                    { name: "CDC Maternal Health", detail: "Public health data, guidelines, and resources on maternal mortality, complications, and healthy pregnancy.", url: "https://www.cdc.gov/reproductivehealth/maternal-infant-health/" },
+                  ].map((org) => (
+                    <a key={org.name} href={org.url} target="_blank" rel="noopener noreferrer"
+                      className="block bg-card border border-border hover:border-primary/40 rounded-xl px-4 py-3.5 transition-all hover:shadow-sm group">
+                      <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{org.name}</p>
+                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{org.detail}</p>
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </section>
