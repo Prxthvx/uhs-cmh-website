@@ -62,7 +62,7 @@ export const videos: Video[] = [
     id: "pt-1",
     title: "Talking Postpartum Depression — Emily's Story",
     description:
-      "Part of the U.S. Office on Women's Health "Talking PPD" public health campaign. Emily shares her raw and honest experience with postpartum depression: the warning signs she missed, the moment she finally sought help, and how she rebuilt her life with the right support. Content warning: mentions of self-harm and suicidal thoughts.",
+      "Part of the U.S. Office on Women's Health \"Talking PPD\" public health campaign. Emily shares her raw and honest experience with postpartum depression: the warning signs she missed, the moment she finally sought help, and how she rebuilt her life with the right support. Content warning: mentions of self-harm and suicidal thoughts.",
     category: "Postpartum Testimonials",
     thumbnail:
       "https://images.unsplash.com/photo-1493894473891-10fc1e5dbd22?w=600&h=400&fit=crop",
