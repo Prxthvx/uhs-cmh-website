@@ -328,6 +328,258 @@ const PregnancyGuide = () => {
             </div>
           </section>
 
+          {/* SECTION: SECOND TRIMESTER */}
+          <section id="second-trimester" className="scroll-mt-28">
+            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
+                <Baby size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Second Trimester (Weeks 13 - 27)</h2>
+            </div>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">What to Expect & Physical Changes</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  Widely regarded as the "honeymoon phase," the second trimester usually brings relief from acute nausea and crushing fatigue. The placenta fully takes over hormone production. Physically, the uterus expands rapidly, rising out of the pelvis, and a visible "bump" will form. You will likely feel your first fetal movements (called "quickening") between weeks 16 and 22. Initially, these feel like subtle flutters or gas bubbles, progressing to definitive kicks.
+                </p>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  New discomforts may arrive: round ligament pain (sharp, brief pains in the lower abdomen caused by the stretching of the ligaments supporting the uterus), leg cramps, and nasal congestion (due to increased blood volume swelling the mucous membranes).
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Critical Mid-Pregnancy Screenings</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  <strong>The Anatomy Scan (Weeks 18-22):</strong> This comprehensive ultrasound evaluates exactly how the fetus is developing. The technician will measure cardiac structures, brain ventricles, kidneys, limbs, spine, and face, as well as placental location. You can usually find out the sex of the baby during this scan if you choose.
+                </p>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  <strong>Glucose Challenge Test (Weeks 24-28):</strong> To screen for gestational diabetes, you consume a sugary liquid, and your blood sugar is tested an hour later. If elevated, a 3-hour tolerance test diagnostic is required. Unmanaged gestational diabetes can lead to macrosomia (large birth weight) and infant hypoglycemia.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION: THIRD TRIMESTER */}
+          <section id="third-trimester" className="scroll-mt-28">
+            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
+                <HeartPulse size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Third Trimester (Weeks 28 - 40+)</h2>
+            </div>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">The Home Stretch & Kick Counting</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  The fetus is prioritizing weight gain and neural maturation. The sheer physical footprint of the baby will press heavily against your diaphragm (causing shortness of breath) and your stomach (causing severe heartburn). Sleep disrupts frequently.
+                </p>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  <strong>Kick Counting:</strong> A crucial safety protocol initiated at week 28. Choose a time when the baby is typically active. Sit down or lie on your side, and count every kick, roll, or jab. You should feel 10 positive movements within 2 hours. A sudden decrease in fetal movement requires immediate clinical investigation, as it can indicate fetal distress.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Final Screenings</h3>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  Around weeks 35-37, a Group B Streptococcus (GBS) swab is taken. GBS is a common bacteria that is relatively harmless to adults but can cause severe infection in newborns during vaginal delivery. If positive, you will receive IV antibiotics during labor to protect the infant.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION: LABOR & DELIVERY */}
+          <section id="labor-delivery" className="scroll-mt-28">
+            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
+                <FileText size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Labor & Delivery Readiness</h2>
+            </div>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Signs of Birth Readiness & Check-Ins</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  Do not rely purely on dates. "Lightening" is when the baby drops into the pelvic cavity. You may lose your protective mucus plug contextually with mild "bloody show." Braxton Hicks (practice) contractions will gain frequency, but true labor contractions exhibit consistency: they grow longer, stronger, and unequivocally closer together.
+                </p>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  <strong>The 5-1-1 Rule:</strong> Medical guidelines suggest calling your triage team when contractions are 5 minutes apart, lasting 1 minute each, for 1 full hour. If your water breaks (whether a gush or trickle), you must contact the hospital immediately due to the risk of infection.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Birth Plan Specifics & Logistics</h3>
+                <p className="text-lg text-muted-foreground leading-loose">
+                  A Birth Plan defines your medical preferences, though flexibility is paramount. Key considerations: pain management (epidural, nitrous oxide, natural birthing techniques), the atmosphere of the room, who cuts the umbilical cord, preferences on delayed cord clamping, and immediate skin-to-skin contact.
+                </p>
+                <p className="text-lg text-muted-foreground leading-loose mt-4">
+                  Discuss the location of birth (hospital birthing suite, specialized birthing center, or guided home delivery) well in advance. Research childbirth education classes (Lamaze, Bradley method, or hypnobirthing) early in the third trimester.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION: POSTPARTUM CARE */}
+          <section id="postpartum" className="scroll-mt-28">
+            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
+                <HeartPulse size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Postpartum Care ("The Fourth Trimester")</h2>
+            </div>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Physical Recovery</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  The initial six weeks are fundamentally focused on healing. Vaginal tearing, episiotomy stitches, or major abdominal surgery (Cesarean delivery) demand severe restriction of activity. Lochia (postpartum bleeding) will mimic a heavy period for several days before tapering over weeks. No tampons, intercourse, or heavy lifting should occur until cleared at the 6-week post-op checkup.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Mental Health: "Blues" vs. PPD</h3>
+                <p className="text-lg text-muted-foreground leading-loose mb-4">
+                  An immediate, massive hormone crash causes "Baby Blues" (weeping, anxiety, exhaustion) in 80% of mothers, resolving in roughly two weeks. However, if severe anxiety, an inability to bond with the infant, sleep disturbances despite exhaustion, or intrusive terrible thoughts persist beyond 14 days, this indicates Postpartum Depression (PPD) or Anxiety (PPA). PPD requires immediate clinical intervention and is a highly treatable complication of childbirth.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Feeding & Rest</h3>
+                <p className="text-lg text-muted-foreground leading-loose pb-8">
+                  Whether exclusively breastfeeding, pumping, using formula, or combining methods, infant feeding entails a rigorous 2-3 hour cycle schedule around the clock. Lactation consultants are instrumental for correcting latch pathology and mitigating mastitis (painful breast tissue infection). Ensure you prioritize your own nutrition and hydration, and literally "sleep when the baby sleeps" to combat severe systemic sleep deprivation.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION: MILESTONE TESTS */}
+          <section id="milestone-tests" className="scroll-mt-28">
+            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
+                <FlaskConical size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Key Tests & Milestones Timeline</h2>
+            </div>
+            <p className="text-lg text-muted-foreground leading-loose mb-10">
+              One of the most important things no one tells you: <strong>what tests to expect and why</strong>. Each test is done for a specific reason, at a specific time. Knowing this in advance helps you ask the right questions, prepare emotionally, and understand what each result means for you and your baby.
+            </p>
+
+            <div className="space-y-4">
+              {[
+                {
+                  timing: "Week 6–10",
+                  name: "Dating Ultrasound",
+                  type: "Ultrasound",
+                  color: "emerald",
+                  why: "Confirms the pregnancy is viable (heartbeat detected), determines your accurate due date by measuring the baby's size, and checks for ectopic (dangerous out-of-uterus) pregnancy.",
+                  what: "A wand (transvaginal) or gel pad (abdominal) ultrasound. You will see and hear the heartbeat for the first time — a small flicker on screen.",
+                  result: "If all is well, you'll get a due date and confirmation that the baby is in the right place. If no heartbeat is found before 8 weeks, a follow-up scan is scheduled.",
+                  questions: ["Can I hear the heartbeat today?", "What is my exact due date?", "Is everything in the right position?"]
+                },
+                {
+                  timing: "Weeks 10–13",
+                  name: "NIPT (Non-Invasive Prenatal Test) + First Trimester Screening",
+                  type: "Blood Test + Ultrasound",
+                  color: "blue",
+                  why: "Screens for chromosomal conditions like Down syndrome (Trisomy 21), Trisomy 18, and Trisomy 13. Also screens for sex chromosome conditions. Can reveal baby's sex.",
+                  what: "A simple maternal blood draw that analyzes fetal DNA circulating in your bloodstream. The Nuchal Translucency (NT) ultrasound measures fluid at the back of the baby's neck — thicker fluid can indicate chromosomal issues.",
+                  result: "Results are returned within 1–2 weeks. A 'low risk' result is reassuring but not a guarantee. 'High risk' means further diagnostic testing (like amniocentesis) may be offered — not a definitive diagnosis.",
+                  questions: ["Is this a screening or a diagnostic test?", "What do the results mean if they come back high risk?", "Will this tell me the sex?"]
+                },
+                {
+                  timing: "Weeks 18–22",
+                  name: "Anatomy Scan (Level 2 Ultrasound)",
+                  type: "Ultrasound",
+                  color: "purple",
+                  why: "The most detailed ultrasound of the entire pregnancy. Checks that every major organ, limb, and structure is forming correctly. Also checks placenta position and amniotic fluid levels.",
+                  what: "An abdominal ultrasound lasting 30–60 minutes. The sonographer carefully examines the brain, heart (4 chambers), spine, kidneys, face, lips, arms, legs, and umbilical cord. Sex can be determined if desired.",
+                  result: "Most scans show everything developing normally. If an issue is found (like a heart defect or cleft palate), you'll be referred to a specialist. This does NOT always mean the worst — many findings are minor or resolve before birth.",
+                  questions: ["Is everything measuring correctly?", "Where is my placenta?", "Do you see anything that needs follow-up?", "Can you show me the baby's face?"]
+                },
+                {
+                  timing: "Weeks 24–28",
+                  name: "Glucose Challenge Test (GD Screening)",
+                  type: "Blood Test",
+                  color: "orange",
+                  why: "Screens for gestational diabetes — high blood sugar that develops during pregnancy. If unmanaged, it can cause your baby to grow very large, leading to delivery complications, and increases your own risk of developing Type 2 diabetes later.",
+                  what: "You drink a very sweet glucose drink, wait 1 hour without eating, then have a blood draw. No fasting required beforehand. If your blood sugar is elevated, you'll be asked back for a 3-hour fasting test to confirm.",
+                  result: "Failing the 1-hour test does NOT mean you have gestational diabetes — about 1 in 3 women who fail go on to pass the 3-hour test. If GD is confirmed, it is managed with diet, exercise, and sometimes insulin.",
+                  questions: ["What number should my result be below?", "What does gestational diabetes mean for my birth plan?", "What foods help control blood sugar?"]
+                },
+                {
+                  timing: "Weeks 28–32",
+                  name: "RhoGAM Injection (if Rh-negative blood type)",
+                  type: "Injection",
+                  color: "pink",
+                  why: "If your blood type is Rh-negative (e.g., A-, B-, O-) and your baby is Rh-positive, your immune system could attack the baby's red blood cells in this or future pregnancies. RhoGAM prevents this.",
+                  what: "A single injection given around week 28. If you have any bleeding events during pregnancy, you may receive additional doses. Another dose is given after delivery if the baby is found to be Rh-positive.",
+                  result: "This is preventative — not diagnostic. You don't need it if both you and the baby's father are Rh-negative. Ask your provider to check your blood type early.",
+                  questions: ["What is my blood type?", "Does my partner know their Rh factor?", "Will I need another injection after delivery?"]
+                },
+                {
+                  timing: "Weeks 35–37",
+                  name: "Group B Streptococcus (GBS) Swab",
+                  type: "Swab Test",
+                  color: "teal",
+                  why: "GBS bacteria are harmless and common in adults, but can cause life-threatening infection in newborns during vaginal delivery. About 25% of pregnant women carry GBS.",
+                  what: "A quick, painless swab of the vagina and rectum taken during a regular prenatal visit. Results are ready within 24–48 hours.",
+                  result: "If positive, you'll receive IV antibiotics during labor — this fully protects your baby. A positive result doesn't require a C-section or change your birth plan.",
+                  questions: ["If I'm positive, will I still be able to have a vaginal birth?", "What happens if I arrive too late for IV antibiotics?", "Is it safe to breastfeed with GBS?"]
+                },
+              ].map((test) => {
+                const colorMap: Record<string, string> = {
+                  emerald: "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800",
+                  blue: "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800",
+                  purple: "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800",
+                  orange: "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-800",
+                  pink: "bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-800",
+                  teal: "bg-teal-50 dark:bg-teal-950/20 border-teal-200 dark:border-teal-800",
+                };
+                const badgeMap: Record<string, string> = {
+                  emerald: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300",
+                  blue: "bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300",
+                  purple: "bg-purple-100 text-purple-700 dark:bg-purple-900/50 dark:text-purple-300",
+                  orange: "bg-orange-100 text-orange-700 dark:bg-orange-900/50 dark:text-orange-300",
+                  pink: "bg-pink-100 text-pink-700 dark:bg-pink-900/50 dark:text-pink-300",
+                  teal: "bg-teal-100 text-teal-700 dark:bg-teal-900/50 dark:text-teal-300",
+                };
+                return (
+                  <div key={test.name} className={`border rounded-2xl p-6 ${colorMap[test.color]}`}>
+                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold ${badgeMap[test.color]}`}>{test.timing}</span>
+                      <span className="px-3 py-1 rounded-full text-xs font-medium bg-secondary text-muted-foreground">{test.type}</span>
+                    </div>
+                    <h4 className="text-xl font-bold text-foreground mb-4">{test.name}</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                      <div>
+                        <p className="text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">Why it's done</p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{test.why}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">What happens</p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{test.what}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">Understanding results</p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{test.result}</p>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-foreground uppercase tracking-wider mb-2">Questions to ask your doctor</p>
+                      <div className="flex flex-wrap gap-2">
+                        {test.questions.map((q) => (
+                          <span key={q} className="text-xs bg-white/50 dark:bg-black/20 border border-current/20 rounded-lg px-3 py-1.5 text-muted-foreground italic">"{q}"</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
           {/* SECTION: WEEK BY WEEK */}
           <section id="week-by-week" className="scroll-mt-28">
             <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
@@ -469,258 +721,6 @@ const PregnancyGuide = () => {
                 </div>
               );
             })()}
-          </section>
-
-          {/* SECTION: SECOND TRIMESTER */}
-          <section id="second-trimester" className="scroll-mt-28">
-            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
-                <Baby size={24} />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Second Trimester (Weeks 13 - 27)</h2>
-            </div>
-            
-            <div className="space-y-10">
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">What to Expect & Physical Changes</h3>
-                <p className="text-lg text-muted-foreground leading-loose mb-4">
-                  Widely regarded as the "honeymoon phase," the second trimester usually brings relief from acute nausea and crushing fatigue. The placenta fully takes over hormone production. Physically, the uterus expands rapidly, rising out of the pelvis, and a visible "bump" will form. You will likely feel your first fetal movements (called "quickening") between weeks 16 and 22. Initially, these feel like subtle flutters or gas bubbles, progressing to definitive kicks.
-                </p>
-                <p className="text-lg text-muted-foreground leading-loose">
-                  New discomforts may arrive: round ligament pain (sharp, brief pains in the lower abdomen caused by the stretching of the ligaments supporting the uterus), leg cramps, and nasal congestion (due to increased blood volume swelling the mucous membranes).
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Critical Mid-Pregnancy Screenings</h3>
-                <p className="text-lg text-muted-foreground leading-loose mb-4">
-                  <strong>The Anatomy Scan (Weeks 18-22):</strong> This comprehensive ultrasound evaluates exactly how the fetus is developing. The technician will measure cardiac structures, brain ventricles, kidneys, limbs, spine, and face, as well as placental location. You can usually find out the sex of the baby during this scan if you choose.
-                </p>
-                <p className="text-lg text-muted-foreground leading-loose">
-                  <strong>Glucose Challenge Test (Weeks 24-28):</strong> To screen for gestational diabetes, you consume a sugary liquid, and your blood sugar is tested an hour later. If elevated, a 3-hour tolerance test diagnostic is required. Unmanaged gestational diabetes can lead to macrosomia (large birth weight) and infant hypoglycemia.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* SECTION: THIRD TRIMESTER */}
-          <section id="third-trimester" className="scroll-mt-28">
-            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
-                <HeartPulse size={24} />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Third Trimester (Weeks 28 - 40+)</h2>
-            </div>
-            
-            <div className="space-y-10">
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">The Home Stretch & Kick Counting</h3>
-                <p className="text-lg text-muted-foreground leading-loose mb-4">
-                  The fetus is prioritizing weight gain and neural maturation. The sheer physical footprint of the baby will press heavily against your diaphragm (causing shortness of breath) and your stomach (causing severe heartburn). Sleep disrupts frequently.
-                </p>
-                <p className="text-lg text-muted-foreground leading-loose">
-                  <strong>Kick Counting:</strong> A crucial safety protocol initiated at week 28. Choose a time when the baby is typically active. Sit down or lie on your side, and count every kick, roll, or jab. You should feel 10 positive movements within 2 hours. A sudden decrease in fetal movement requires immediate clinical investigation, as it can indicate fetal distress.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Final Screenings</h3>
-                <p className="text-lg text-muted-foreground leading-loose">
-                  Around weeks 35-37, a Group B Streptococcus (GBS) swab is taken. GBS is a common bacteria that is relatively harmless to adults but can cause severe infection in newborns during vaginal delivery. If positive, you will receive IV antibiotics during labor to protect the infant.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* SECTION: MILESTONE TESTS */}
-          <section id="milestone-tests" className="scroll-mt-28">
-            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
-                <FlaskConical size={24} />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Key Tests & Milestones Timeline</h2>
-            </div>
-            <p className="text-lg text-muted-foreground leading-loose mb-10">
-              One of the most important things no one tells you: <strong>what tests to expect and why</strong>. Each test is done for a specific reason, at a specific time. Knowing this in advance helps you ask the right questions, prepare emotionally, and understand what each result means for you and your baby.
-            </p>
-
-            <div className="space-y-4">
-              {[
-                {
-                  timing: "Week 6–10",
-                  name: "Dating Ultrasound",
-                  type: "Ultrasound",
-                  color: "emerald",
-                  why: "Confirms the pregnancy is viable (heartbeat detected), determines your accurate due date by measuring the baby's size, and checks for ectopic (dangerous out-of-uterus) pregnancy.",
-                  what: "A wand (transvaginal) or gel pad (abdominal) ultrasound. You will see and hear the heartbeat for the first time — a small flicker on screen.",
-                  result: "If all is well, you'll get a due date and confirmation that the baby is in the right place. If no heartbeat is found before 8 weeks, a follow-up scan is scheduled.",
-                  questions: ["Can I hear the heartbeat today?", "What is my exact due date?", "Is everything in the right position?"]
-                },
-                {
-                  timing: "Weeks 10–13",
-                  name: "NIPT (Non-Invasive Prenatal Test) + First Trimester Screening",
-                  type: "Blood Test + Ultrasound",
-                  color: "blue",
-                  why: "Screens for chromosomal conditions like Down syndrome (Trisomy 21), Trisomy 18, and Trisomy 13. Also screens for sex chromosome conditions. Can reveal baby's sex.",
-                  what: "A simple maternal blood draw that analyzes fetal DNA circulating in your bloodstream. The Nuchal Translucency (NT) ultrasound measures fluid at the back of the baby's neck — thicker fluid can indicate chromosomal issues.",
-                  result: "Results are returned within 1–2 weeks. A 'low risk' result is reassuring but not a guarantee. 'High risk' means further diagnostic testing (like amniocentesis) may be offered — not a definitive diagnosis.",
-                  questions: ["Is this a screening or a diagnostic test?", "What do the results mean if they come back high risk?", "Will this tell me the sex?"]
-                },
-                {
-                  timing: "Weeks 18–22",
-                  name: "Anatomy Scan (Level 2 Ultrasound)",
-                  type: "Ultrasound",
-                  color: "purple",
-                  why: "The most detailed ultrasound of the entire pregnancy. Checks that every major organ, limb, and structure is forming correctly. Also checks placenta position and amniotic fluid levels.",
-                  what: "An abdominal ultrasound lasting 30–60 minutes. The sonographer carefully examines the brain, heart (4 chambers), spine, kidneys, face, lips, arms, legs, and umbilical cord. Sex can be determined if desired.",
-                  result: "Most scans show everything developing normally. If an issue is found (like a heart defect or cleft palate), you'll be referred to a specialist. This does NOT always mean the worst — many findings are minor or resolve before birth.",
-                  questions: ["Is everything measuring correctly?", "Where is my placenta?", "Do you see anything that needs follow-up?", "Can you show me the baby's face?"]
-                },
-                {
-                  timing: "Weeks 24–28",
-                  name: "Glucose Challenge Test (GD Screening)",
-                  type: "Blood Test",
-                  color: "orange",
-                  why: "Screens for gestational diabetes — high blood sugar that develops during pregnancy. If unmanaged, it can cause your baby to grow very large, leading to delivery complications, and increases your own risk of developing Type 2 diabetes later.",
-                  what: "You drink a very sweet glucose drink, wait 1 hour without eating, then have a blood draw. No fasting required beforehand. If your blood sugar is elevated, you'll be asked back for a 3-hour fasting test to confirm.",
-                  result: "Failing the 1-hour test does NOT mean you have gestational diabetes — about 1 in 3 women who fail go on to pass the 3-hour test. If GD is confirmed, it is managed with diet, exercise, and sometimes insulin.",
-                  questions: ["What number should my result be below?", "What does gestational diabetes mean for my birth plan?", "What foods help control blood sugar?"]
-                },
-                {
-                  timing: "Weeks 28–32",
-                  name: "RhoGAM Injection (if Rh-negative blood type)",
-                  type: "Injection",
-                  color: "pink",
-                  why: "If your blood type is Rh-negative (e.g., A-, B-, O-) and your baby is Rh-positive, your immune system could attack the baby's red blood cells in this or future pregnancies. RhoGAM prevents this.",
-                  what: "A single injection given around week 28. If you have any bleeding events during pregnancy, you may receive additional doses. Another dose is given after delivery if the baby is found to be Rh-positive.",
-                  result: "This is preventative — not diagnostic. You don't need it if both you and the baby's father are Rh-negative. Ask your provider to check your blood type early.",
-                  questions: ["What is my blood type?", "Does my partner know their Rh factor?", "Will I need another injection after delivery?"]
-                },
-                {
-                  timing: "Weeks 35–37",
-                  name: "Group B Streptococcus (GBS) Swab",
-                  type: "Swab Test",
-                  color: "teal",
-                  why: "GBS bacteria are harmless and common in adults, but can cause life-threatening infection in newborns during vaginal delivery. About 25% of pregnant women carry GBS.",
-                  what: "A quick, painless swab of the vagina and rectum taken during a regular prenatal visit. Results are ready within 24–48 hours.",
-                  result: "If positive, you'll receive IV antibiotics during labor — this fully protects your baby. A positive result doesn't require a C-section or change your birth plan.",
-                  questions: ["If I'm positive, will I still be able to have a vaginal birth?", "What happens if I arrive too late for IV antibiotics?", "Is it safe to breastfeed with GBS?"]
-                },
-              ].map((test) => {
-                const colorMap: Record<string, string> = {
-                  emerald: "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800",
-                  blue: "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800",
-                  purple: "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800",
-                  orange: "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-800",
-                  pink: "bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-800",
-                  teal: "bg-teal-50 dark:bg-teal-950/20 border-teal-200 dark:border-teal-800",
-                };
-                const badgeMap: Record<string, string> = {
-                  emerald: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300",
-                  blue: "bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300",
-                  purple: "bg-purple-100 text-purple-700 dark:bg-purple-900/50 dark:text-purple-300",
-                  orange: "bg-orange-100 text-orange-700 dark:bg-orange-900/50 dark:text-orange-300",
-                  pink: "bg-pink-100 text-pink-700 dark:bg-pink-900/50 dark:text-pink-300",
-                  teal: "bg-teal-100 text-teal-700 dark:bg-teal-900/50 dark:text-teal-300",
-                };
-                return (
-                  <div key={test.name} className={`border rounded-2xl p-6 ${colorMap[test.color]}`}>
-                    <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <span className={`px-3 py-1 rounded-full text-xs font-bold ${badgeMap[test.color]}`}>{test.timing}</span>
-                      <span className="px-3 py-1 rounded-full text-xs font-medium bg-secondary text-muted-foreground">{test.type}</span>
-                    </div>
-                    <h4 className="text-xl font-bold text-foreground mb-4">{test.name}</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                      <div>
-                        <p className="text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">Why it's done</p>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{test.why}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">What happens</p>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{test.what}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">Understanding results</p>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{test.result}</p>
-                      </div>
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold text-foreground uppercase tracking-wider mb-2">Questions to ask your doctor</p>
-                      <div className="flex flex-wrap gap-2">
-                        {test.questions.map((q) => (
-                          <span key={q} className="text-xs bg-white/50 dark:bg-black/20 border border-current/20 rounded-lg px-3 py-1.5 text-muted-foreground italic">"{q}"</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          {/* SECTION: LABOR & DELIVERY */}
-          <section id="labor-delivery" className="scroll-mt-28">
-            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
-                <FileText size={24} />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Labor & Delivery Readiness</h2>
-            </div>
-            
-            <div className="space-y-10">
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Signs of Birth Readiness & Check-Ins</h3>
-                <p className="text-lg text-muted-foreground leading-loose mb-4">
-                  Do not rely purely on dates. "Lightening" is when the baby drops into the pelvic cavity. You may lose your protective mucus plug contextually with mild "bloody show." Braxton Hicks (practice) contractions will gain frequency, but true labor contractions exhibit consistency: they grow longer, stronger, and unequivocally closer together.
-                </p>
-                <p className="text-lg text-muted-foreground leading-loose">
-                  <strong>The 5-1-1 Rule:</strong> Medical guidelines suggest calling your triage team when contractions are 5 minutes apart, lasting 1 minute each, for 1 full hour. If your water breaks (whether a gush or trickle), you must contact the hospital immediately due to the risk of infection.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Birth Plan Specifics & Logistics</h3>
-                <p className="text-lg text-muted-foreground leading-loose">
-                  A Birth Plan defines your medical preferences, though flexibility is paramount. Key considerations: pain management (epidural, nitrous oxide, natural birthing techniques), the atmosphere of the room, who cuts the umbilical cord, preferences on delayed cord clamping, and immediate skin-to-skin contact.
-                </p>
-                <p className="text-lg text-muted-foreground leading-loose mt-4">
-                  Discuss the location of birth (hospital birthing suite, specialized birthing center, or guided home delivery) well in advance. Research childbirth education classes (Lamaze, Bradley method, or hypnobirthing) early in the third trimester.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* SECTION: POSTPARTUM CARE */}
-          <section id="postpartum" className="scroll-mt-28">
-            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
-                <HeartPulse size={24} />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Postpartum Care ("The Fourth Trimester")</h2>
-            </div>
-            
-            <div className="space-y-10">
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Physical Recovery</h3>
-                <p className="text-lg text-muted-foreground leading-loose mb-4">
-                  The initial six weeks are fundamentally focused on healing. Vaginal tearing, episiotomy stitches, or major abdominal surgery (Cesarean delivery) demand severe restriction of activity. Lochia (postpartum bleeding) will mimic a heavy period for several days before tapering over weeks. No tampons, intercourse, or heavy lifting should occur until cleared at the 6-week post-op checkup.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Mental Health: "Blues" vs. PPD</h3>
-                <p className="text-lg text-muted-foreground leading-loose mb-4">
-                  An immediate, massive hormone crash causes "Baby Blues" (weeping, anxiety, exhaustion) in 80% of mothers, resolving in roughly two weeks. However, if severe anxiety, an inability to bond with the infant, sleep disturbances despite exhaustion, or intrusive terrible thoughts persist beyond 14 days, this indicates Postpartum Depression (PPD) or Anxiety (PPA). PPD requires immediate clinical intervention and is a highly treatable complication of childbirth.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Feeding & Rest</h3>
-                <p className="text-lg text-muted-foreground leading-loose pb-8">
-                  Whether exclusively breastfeeding, pumping, using formula, or combining methods, infant feeding entails a rigorous 2-3 hour cycle schedule around the clock. Lactation consultants are instrumental for correcting latch pathology and mitigating mastitis (painful breast tissue infection). Ensure you prioritize your own nutrition and hydration, and literally "sleep when the baby sleeps" to combat severe systemic sleep deprivation.
-                </p>
-              </div>
-            </div>
           </section>
 
           {/* SECTION: HEALTH ISSUES */}
