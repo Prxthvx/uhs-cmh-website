@@ -13,6 +13,8 @@ import {
   Search,
   FileText,
   ArrowRight,
+  Bus,
+  Briefcase,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -396,6 +398,85 @@ const SupportResourcesPage = () => {
                 </p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Maternity Logistics */}
+      <section className="py-14 md:py-20">
+        <div className="container max-w-5xl mx-auto px-4">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <Briefcase className="text-primary" size={20} />
+            </div>
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+                Maternity Logistics
+              </h2>
+              <p className="text-muted-foreground text-sm mt-1">
+                Insurance, leave, and transportation — the practical side of pregnancy.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Insurance & Maternity Leave */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="bg-card border border-border rounded-2xl p-7 space-y-4"
+            >
+              <div className="flex items-center gap-3 mb-1">
+                <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <FileText size={18} className="text-primary" />
+                </div>
+                <h3 className="text-lg font-bold text-foreground">Insurance, Coverage & Maternity Leave</h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Contact your insurer early to understand the difference between preventive prenatal care coverages and high-deductible hospital delivery fees. Adding a newborn — called insurance "issuance" — is usually required within <strong>30 days of birth</strong>.
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                The <strong>Family and Medical Leave Act (FMLA)</strong> protects your job for up to 12 unpaid weeks. Check whether your state offers paid family leave or short-term disability. File FMLA paperwork early in your third trimester to avoid last-minute stress.
+              </p>
+              <a
+                href="https://www.dol.gov/agencies/whd/fmla"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+              >
+                Learn about FMLA <ExternalLink size={13} />
+              </a>
+            </motion.div>
+
+            {/* Transportation */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="bg-card border border-border rounded-2xl p-7 space-y-4"
+            >
+              <div className="flex items-center gap-3 mb-1">
+                <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <Bus size={18} className="text-primary" />
+                </div>
+                <h3 className="text-lg font-bold text-foreground">Transportation & Appointment Planning</h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                A low-risk pregnancy typically involves around <strong>15 clinical visits</strong>. Batching blood draws directly after standard appointments can minimize disruption to your schedule.
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                UHS CMH offers a dedicated <strong>Maternity Transit shuttle</strong> synchronized with Chenango Memorial Hospital routes. Routes run regularly and the fare is just $1 — so you never have to worry about missing an appointment due to transportation.
+              </p>
+              <a
+                href="/transportation"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+              >
+                View shuttle schedules <ArrowRight size={13} />
+              </a>
+            </motion.div>
           </div>
         </div>
       </section>

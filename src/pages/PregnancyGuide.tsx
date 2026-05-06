@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { useLocation } from "react-router-dom";
-import { BookOpen, FileText, CalendarHeart, Sparkles, Baby, HeartPulse, ShieldAlert, Library, Bus, CheckCircle2, FlaskConical, MessageCircleQuestion, Quote, AlertTriangle } from "lucide-react";
+import { BookOpen, FileText, CalendarHeart, Sparkles, Baby, HeartPulse, ShieldAlert, Library, CheckCircle2, FlaskConical, MessageCircleQuestion, Quote, AlertTriangle } from "lucide-react";
 
 const PregnancyGuide = () => {
   const { hash } = useLocation();
@@ -68,7 +68,6 @@ const PregnancyGuide = () => {
     { id: "week-by-week", label: "Baby Week by Week", icon: Baby },
     { id: "health-issues", label: "Health & Safety", icon: ShieldAlert },
     { id: "questions-to-ask", label: "Questions to Ask", icon: MessageCircleQuestion },
-    { id: "logistics", label: "Logistics", icon: Bus },
     { id: "resources", label: "External Resources", icon: Library },
   ];
 
@@ -925,35 +924,6 @@ const PregnancyGuide = () => {
                     ))}
                   </div>
                 </div>
-              </div>
-            </div>
-          </section>
-
-          {/* SECTION: LOGISTICS */}
-          <section id="logistics" className="scroll-mt-28">
-            <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
-                <Bus size={24} />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Maternity Logistics</h2>
-            </div>
-            
-            <div className="space-y-10">
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Insurance, Issuance & Maternity Leave</h3>
-                <p className="text-lg text-muted-foreground leading-loose mb-4">
-                  Logistical administration is complex. Contact your insurer early to understand the difference between preventive prenatal care coverages versus high-deductible hospital delivery fees. Understand how to "add" a dependent—called insurance Issuance—usually required within precisely 30 days of birth. 
-                </p>
-                <p className="text-lg text-muted-foreground leading-loose">
-                  Research FMLA (Family and Medical Leave Act) which protects your job for 12 unpaid weeks in the US, alongside any state-sponsored short-term disability or paid family leave policies natively offered by your employer. File your FMLA paperwork early in the third trimester.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Transportation & Appointment Batching</h3>
-                <p className="text-lg text-muted-foreground leading-loose">
-                  A low-risk pregnancy demands approximately 15 clinical visits. Batching blood-draws directly after standard appointments minimizes disruption. Pre-determine how you will manage location transit if rural. UHS CMH offers localized Maternity Transit systems specifically synchronized with Chenango Memorial Hospital routes.
-                </p>
               </div>
             </div>
           </section>
