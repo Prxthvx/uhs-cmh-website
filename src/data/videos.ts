@@ -88,7 +88,7 @@ export const videos: Video[] = [
     id: "pt-3",
     title: "Talking Postpartum Depression — Allison's Story",
     description:
-      "Part of the U.S. Office on Women's Health "Talking PPD" campaign. Allison's postpartum depression looked different from what she expected — it came out as rage and detachment, not sadness. Her story helps normalize the many faces of PPD. Content warning: mentions of self-harm.",
+      "Part of the U.S. Office on Women's Health \"Talking PPD\" campaign. Allison's postpartum depression looked different from what she expected — it came out as rage and detachment, not sadness. Her story helps normalize the many faces of PPD. Content warning: mentions of self-harm.",
     category: "Postpartum Testimonials",
     thumbnail:
       "https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=600&h=400&fit=crop",
