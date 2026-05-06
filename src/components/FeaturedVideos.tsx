@@ -48,11 +48,11 @@ const FeaturedVideos = () => {
               </h3>
 
               {/* Thumbnail with Play overlay */}
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-500">
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-500">
                 <img
                   src={
                     video
-                      ? `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`
+                      ? `https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`
                       : cat.image
                   }
                   alt={video?.title || cat.key}
