@@ -2,15 +2,15 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import ResourcesHub from "./pages/ResourcesHub";
+import AllResourcesPage from "./pages/AllResourcesPage";
 import TransitLogisticsPage from "./pages/TransitLogisticsPage";
 import MythBustersPage from "./pages/MythBustersPage";
 import PregnancyGuide from "./pages/PregnancyGuide";
 import RealStoriesPage from "./pages/RealStoriesPage";
-import ProfessionalAdvicePage from "./pages/ProfessionalAdvicePage";
 import SupportResourcesPage from "./pages/SupportResourcesPage";
 import TopicHubPage from "./pages/TopicHubPage";
 import VideoViewPage from "./pages/VideoViewPage";
@@ -25,14 +25,16 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/resources" element={<ResourcesHub />} />
+          {/* Old /resources hub → redirect straight to the Maternal Guide */}
+          <Route path="/resources" element={<Navigate to="/pregnancy-guide" replace />} />
+          <Route path="/all-resources" element={<AllResourcesPage />} />
           <Route path="/transportation" element={<TransitLogisticsPage />} />
           <Route path="/myth-busters" element={<MythBustersPage />} />
           <Route path="/pregnancy-guide" element={<PregnancyGuide />} />
           <Route path="/real-stories" element={<RealStoriesPage />} />
-          <Route path="/professional-advice" element={<ProfessionalAdvicePage />} />
           <Route path="/support" element={<SupportResourcesPage />} />
           <Route path="/topics/:slug" element={<TopicHubPage />} />
           <Route path="/video/:id" element={<VideoViewPage />} />
@@ -47,4 +49,3 @@ const App = () => (
 );
 
 export default App;
-

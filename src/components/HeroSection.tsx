@@ -67,10 +67,10 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-8">
           
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             className="px-8 py-3 text-base font-medium rounded-lg"
-            onClick={() => navigate('/resources')}
+            onClick={() => navigate('/all-resources')}
           >
             Explore Resources
           </Button>

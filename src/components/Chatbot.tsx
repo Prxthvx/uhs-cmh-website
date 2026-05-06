@@ -51,7 +51,7 @@ const Chatbot = () => {
       responseText = (
         <span>
           We have an extensive, medically verified Maternal Guide covering everything from Preconception to Postpartum care.{" "}
-          <Link to="/resources" className="text-emerald-300 underline font-semibold" onClick={() => setIsOpen(false)}>
+          <Link to="/pregnancy-guide" className="text-emerald-300 underline font-semibold" onClick={() => setIsOpen(false)}>
             Explore the guide here.
           </Link>
         </span>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import uhsLogo from "@/assets/uhs-logo.svg";
 
 const SiteFooter = () => {
   return (
@@ -10,10 +11,8 @@ const SiteFooter = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <div className="h-6 w-6 rounded bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xs">M</span>
-              </div>
-              <span className="font-medium text-sm text-foreground">MaternalHealth</span>
+              <img src={uhsLogo} alt="UHS Logo" className="h-6 w-auto" />
+              <span className="font-medium text-sm text-foreground">Maternal Health at CMH</span>
             </div>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Your trusted maternal health resource — expert guidance, real
@@ -27,26 +26,23 @@ const SiteFooter = () => {
               Explore
             </h4>
             <div className="grid grid-cols-2 gap-2">
-              <Link to="/resources" className="text-xs text-muted-foreground hover:text-primary transition-colors">
-                Resources
+              <Link to="/pregnancy-guide" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                Maternal Guide
               </Link>
               <Link to="/real-stories" className="text-xs text-muted-foreground hover:text-primary transition-colors">
                 Real Stories
               </Link>
-              <Link to="/professional-advice" className="text-xs text-muted-foreground hover:text-primary transition-colors">
-                Professional Advice
-              </Link>
-              <Link to="/diverse-voices" className="text-xs text-muted-foreground hover:text-primary transition-colors">
-                Diverse Voices
-              </Link>
               <Link to="/support" className="text-xs text-muted-foreground hover:text-primary transition-colors">
                 Support & Resources
               </Link>
-              <Link to="/pregnancy-guide" className="text-xs text-muted-foreground hover:text-primary transition-colors">
-                Pregnancy Guide
-              </Link>
               <Link to="/community" className="text-xs text-muted-foreground hover:text-primary transition-colors">
                 Community Forum
+              </Link>
+              <Link to="/transportation" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                Transit & Shuttles
+              </Link>
+              <Link to="/myth-busters" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                Myth Busters
               </Link>
             </div>
           </div>
@@ -89,4 +85,3 @@ const SiteFooter = () => {
 };
 
 export default SiteFooter;
-
