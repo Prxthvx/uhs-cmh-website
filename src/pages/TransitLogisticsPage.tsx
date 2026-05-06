@@ -138,107 +138,96 @@ const TransitLogisticsPage = () => {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+          <div className="space-y-12">
 
-            {/* Route 1 */}
-            <div className="md:col-span-12 lg:col-span-5 space-y-6">
-              <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
-                  Norwich City Residents
-                </h2>
+            {/* Route 1 — Norwich City */}
+            <div>
+              <h2 className="text-2xl font-bold text-foreground mb-4">Norwich City Residents</h2>
 
-                <div className="bg-card border border-primary/20 rounded-xl p-6 md:p-8 shadow-sm relative overflow-hidden group hover:border-primary/40 transition-colors">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
-                  <Badge className="absolute top-6 right-6 bg-primary/10 text-primary hover:bg-primary/20 pointer-events-none">Direct</Badge>
+              <div className="bg-card border border-primary/20 rounded-xl p-6 md:p-8 shadow-sm relative overflow-hidden group hover:border-primary/40 transition-colors">
+                <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
+                <Badge className="absolute top-6 right-6 bg-primary/10 text-primary hover:bg-primary/20 pointer-events-none">Direct to CMH</Badge>
 
-                  <h3 className="font-bold text-xl flex items-center gap-2 mb-6 text-foreground">
-                    <MapPin className="w-6 h-6 text-primary shrink-0" /> Route 1 North Loop
-                  </h3>
+                <h3 className="font-bold text-xl flex items-center gap-2 mb-6 text-foreground">
+                  <MapPin className="w-6 h-6 text-primary shrink-0" /> Route 1 North Loop
+                </h3>
 
-                  <div className="space-y-5 text-base text-muted-foreground">
-                    <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
-                      <strong className="text-foreground w-20 shrink-0 inline-block">Cost:</strong>
-                      <span className="text-lg font-semibold text-primary">$1.00 Adult <span className="text-muted-foreground font-normal text-base">/ $0.50 Half-Fare</span></span>
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
-                      <strong className="text-foreground w-20 shrink-0 inline-block pt-1">Schedule:</strong>
-                      <span className="leading-relaxed bg-secondary/50 p-4 rounded-lg font-medium">
-                        Bus stops at CMH roughly every <span className="text-foreground font-bold">1.5 hours</span> between <span className="text-foreground font-bold">6:21 AM and 4:35 PM</span> (Mon–Fri).
-                      </span>
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
-                      <strong className="text-foreground w-20 shrink-0 inline-block pt-1">Rules:</strong>
-                      <span className="leading-relaxed bg-secondary/50 p-4 rounded-lg text-sm space-y-1">
-                        <span className="block">Exact change only. Children under 5 ride free. ADA accessible.</span>
-                        <span className="block">Call <a href="tel:607-367-1999" className="text-primary font-semibold hover:underline">607-367-1999</a> one day in advance for route deviations.</span>
-                      </span>
-                    </div>
-
-                    <a
-                      href="https://www.chenangocountyny.gov/DocumentCenter/View/5887/Route-1-Norwich---North-and-South-Loops-PDF"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline pt-1"
-                    >
-                      <ExternalLink size={14} /> View Full Route 1 Schedule (PDF)
-                    </a>
+                <div className="grid sm:grid-cols-3 gap-5 text-base text-muted-foreground mb-5">
+                  <div className="bg-secondary/50 rounded-lg p-4">
+                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Cost</p>
+                    <p className="text-lg font-bold text-primary">$1.00 <span className="text-muted-foreground font-normal text-sm">adult</span></p>
+                    <p className="text-sm text-muted-foreground">$0.50 half-fare</p>
+                  </div>
+                  <div className="bg-secondary/50 rounded-lg p-4 sm:col-span-2">
+                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Schedule</p>
+                    <p className="font-medium text-foreground">Every ~1.5 hours between <span className="font-bold">6:21 AM – 4:35 PM</span> (Mon–Fri)</p>
                   </div>
                 </div>
+
+                <div className="bg-secondary/50 rounded-lg p-4 text-sm text-muted-foreground mb-5">
+                  <p className="font-medium text-foreground mb-1">Rider Rules</p>
+                  <p>Exact change only &nbsp;·&nbsp; Children under 5 ride free &nbsp;·&nbsp; ADA accessible</p>
+                  <p className="mt-1">Call <a href="tel:607-367-1999" className="text-primary font-semibold hover:underline">607-367-1999</a> one day in advance for route deviations.</p>
+                </div>
+
+                <a
+                  href="https://www.chenangocountyny.gov/DocumentCenter/View/5887/Route-1-Norwich---North-and-South-Loops-PDF"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+                >
+                  <ExternalLink size={14} /> View Full Route 1 Schedule (PDF)
+                </a>
               </div>
             </div>
 
-            {/* Hub & Spoke + County Routes */}
-            <div className="md:col-span-12 lg:col-span-7 space-y-6">
-              <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">
-                  Coming from Outside Norwich?
-                </h2>
-                <div className="bg-secondary/40 rounded-xl p-5 md:p-6 mb-8 border border-border">
-                  <p className="text-base text-muted-foreground font-medium mb-4">Follow this 3-step transfer process:</p>
-                  <ol className="space-y-3 relative before:absolute before:inset-y-0 before:left-[15px] before:w-px before:bg-border pl-0 list-none">
-                    <li className="relative flex items-start gap-4 text-base">
-                      <div className="w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center font-bold text-primary shrink-0 z-10 shadow-sm">1</div>
-                      <span className="pt-1 text-foreground font-medium">Take your local county bus to <strong>West Park Place</strong> in downtown Norwich.</span>
-                    </li>
-                    <li className="relative flex items-start gap-4 text-base">
-                      <div className="w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center font-bold text-primary shrink-0 z-10 shadow-sm">2</div>
-                      <span className="pt-1 text-foreground font-medium">Pay the <strong>$3.00</strong> county fare.</span>
-                    </li>
-                    <li className="relative flex items-start gap-4 text-base">
-                      <div className="w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center font-bold text-primary shrink-0 z-10 shadow-sm">3</div>
-                      <span className="pt-1 text-foreground font-medium">Transfer to the <strong>Route 1</strong> bus to reach the hospital.</span>
-                    </li>
-                  </ol>
-                </div>
+            {/* Coming from Outside Norwich */}
+            <div>
+              <h2 className="text-2xl font-bold text-foreground mb-4">Coming from Outside Norwich?</h2>
 
-                <h3 className="font-semibold text-lg mb-4 text-foreground">County Routes &amp; Schedules</h3>
-                <div className="space-y-3">
-                  {countyRoutes.map((route) => (
-                    <a
-                      key={route.id}
-                      href={route.pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group flex items-center justify-between bg-card border border-border hover:border-primary/40 rounded-xl px-5 py-4 shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="text-xl shrink-0">🚐</span>
-                        <div>
-                          <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{route.label}</p>
-                          <p className="text-xs text-muted-foreground mt-0.5 flex items-center gap-1">
-                            <Clock size={11} /> {route.hours}
-                          </p>
-                        </div>
+              <div className="bg-secondary/40 rounded-xl p-5 md:p-6 mb-6 border border-border">
+                <p className="text-base text-muted-foreground font-medium mb-4">Follow this 3-step transfer process:</p>
+                <ol className="space-y-3 relative before:absolute before:inset-y-0 before:left-[15px] before:w-px before:bg-border pl-0 list-none">
+                  <li className="relative flex items-start gap-4 text-base">
+                    <div className="w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center font-bold text-primary shrink-0 z-10 shadow-sm">1</div>
+                    <span className="pt-1 text-foreground font-medium">Take your local county bus to <strong>West Park Place</strong> in downtown Norwich.</span>
+                  </li>
+                  <li className="relative flex items-start gap-4 text-base">
+                    <div className="w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center font-bold text-primary shrink-0 z-10 shadow-sm">2</div>
+                    <span className="pt-1 text-foreground font-medium">Pay the <strong>$3.00</strong> county fare.</span>
+                  </li>
+                  <li className="relative flex items-start gap-4 text-base">
+                    <div className="w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center font-bold text-primary shrink-0 z-10 shadow-sm">3</div>
+                    <span className="pt-1 text-foreground font-medium">Transfer to the <strong>Route 1</strong> bus to reach the hospital.</span>
+                  </li>
+                </ol>
+              </div>
+
+              <h3 className="font-semibold text-lg mb-4 text-foreground">County Routes &amp; Schedules</h3>
+              <div className="space-y-3">
+                {countyRoutes.map((route) => (
+                  <a
+                    key={route.id}
+                    href={route.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between bg-card border border-border hover:border-primary/40 rounded-xl px-5 py-4 shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-xl shrink-0">🚐</span>
+                      <div>
+                        <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{route.label}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5 flex items-center gap-1">
+                          <Clock size={11} /> {route.hours}
+                        </p>
                       </div>
-                      <div className="flex items-center gap-1.5 text-xs font-medium text-primary shrink-0 ml-4">
-                        <span className="hidden sm:inline">View Schedule</span>
-                        <ExternalLink size={13} />
-                      </div>
-                    </a>
-                  ))}
-                </div>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-primary shrink-0 ml-4">
+                      <span className="hidden sm:inline">View Schedule</span>
+                      <ExternalLink size={13} />
+                    </div>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
