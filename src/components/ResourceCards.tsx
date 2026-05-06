@@ -1,4 +1,4 @@
-import { CalendarHeart, Baby, Sparkles, ActivitySquare, ArrowRight } from "lucide-react";
+import { CalendarHeart, Baby, Sparkles, ActivitySquare, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -14,100 +14,112 @@ const journeyStages = [
     id: "first-trimester",
     icon: Sparkles,
     title: "First Trimester",
-    myth: "Weeks 1 to 12",
+    myth: "Weeks 1 – 12",
     preview: "Navigating early symptoms like morning sickness, critical initial genetic screenings, and vital prenatal practices.",
   },
   {
     id: "second-trimester",
     icon: Baby,
     title: "Second Trimester",
-    myth: "Weeks 13 to 27",
+    myth: "Weeks 13 – 27",
     preview: "Often called the 'honeymoon phase'. Prepare for the anatomy scan, increasing energy, and feeling those first kicks.",
   },
   {
     id: "third-trimester",
     icon: ActivitySquare,
     title: "Third Trimester",
-    myth: "Weeks 28 to 40+",
+    myth: "Weeks 28 – 40+",
     preview: "The home stretch. Essential information on kick counting, recognizing signs of labor readiness, and finalizing your birth plan.",
-  }
+  },
 ];
 
 const ResourceCards = () => {
   const navigate = useNavigate();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 15 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  };
-
   return (
-    <section id="overview-grid" className="-mt-px pt-12 pb-20 md:pt-16 md:pb-28 bg-secondary/30">
-      <div className="container max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-extrabold text-foreground tracking-tight mb-4">
-            The Pregnancy Journey <span className="text-primary">Overview</span>
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            From the moment you decide to try, all the way to delivery. Hover over a stage to see what is inside, and click to view the full detailed guide.
-          </p>
+    <section id="overview-grid" className="-mt-px pt-12 pb-16 bg-secondary/30">
+      <div className="container max-w-5xl mx-auto px-4">
+
+        {/* Section header */}
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-10">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-widest text-primary/70 mb-1">Your journey</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight leading-tight">
+              The Pregnancy <span className="text-primary">Overview</span>
+            </h2>
+          </div>
+          <button
+            onClick={() => navigate("/pregnancy-guide")}
+            className="text-sm font-semibold text-primary hover:underline flex items-center gap-1 shrink-0"
+          >
+            View full guide <ChevronRight size={14} />
+          </button>
         </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
-        >
-          {journeyStages.map((stage, i) => (
-            <motion.div
-              variants={itemVariants}
-              key={stage.id}
-              onClick={() => navigate(`/pregnancy-guide#${stage.id}`)}
-              className="group relative w-full h-[340px] md:h-[320px] cursor-pointer [perspective:1000px]"
-            >
-              <div className="absolute inset-0 w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                
-                {/* Front of Card */}
-                <div className="absolute inset-0 w-full h-full bg-card border border-border/80 rounded-[2rem] p-8 flex flex-col items-center justify-center text-center shadow-sm [backface-visibility:hidden]">
-                  <div className="w-20 h-20 rounded-2xl bg-secondary/80 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform duration-500 shadow-sm">
-                    <stage.icon size={36} />
-                  </div>
-                  <span className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-3">Stage {i + 1}</span>
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-foreground leading-tight">
-                    {stage.title}
-                  </h3>
-                  <span className="absolute bottom-8 text-sm text-primary/70 flex items-center font-medium">
-                    Hover to explore <ArrowRight className="w-4 h-4 ml-1" />
-                  </span>
-                </div>
+        {/* Journey path — desktop: horizontal row with connector lines, mobile: stacked list */}
+        <div className="relative">
 
-                {/* Back of Card */}
-                <div className="absolute inset-0 w-full h-full bg-primary/5 border-2 border-primary/20 rounded-[2rem] p-8 md:p-10 flex flex-col items-center justify-center text-center shadow-lg [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                  <span className="text-sm font-bold text-primary uppercase tracking-widest mb-3">
-                    {stage.myth}
-                  </span>
-                  <p className="text-lg md:text-xl font-medium text-foreground leading-relaxed flex-grow flex items-center justify-center">
-                    {stage.preview}
-                  </p>
-                  <div className="absolute bottom-8 text-sm text-primary/90 flex items-center bg-background/80 backdrop-blur px-5 py-2.5 rounded-full font-bold shadow-sm group-hover:-translate-y-1 transition-transform">
-                    Read the detailed guide <ArrowRight className="w-4 h-4 ml-2" />
-                  </div>
-                </div>
+          {/* Connector line (desktop only) */}
+          <div
+            aria-hidden
+            className="hidden md:block absolute top-[2.75rem] left-[calc(12.5%+1.5rem)] right-[calc(12.5%+1.5rem)] h-px"
+            style={{ background: "linear-gradient(to right, transparent, hsl(var(--border)) 15%, hsl(var(--border)) 85%, transparent)" }}
+          />
 
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-px md:gap-0">
+            {journeyStages.map((stage, i) => {
+              const Icon = stage.icon;
+              return (
+                <motion.button
+                  key={stage.id}
+                  onClick={() => navigate(`/pregnancy-guide#${stage.id}`)}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ delay: i * 0.07, duration: 0.4 }}
+                  className="group relative flex flex-row md:flex-col items-start md:items-center gap-5 md:gap-0 px-5 md:px-4 py-5 md:py-6 rounded-xl hover:bg-background hover:shadow-sm border border-transparent hover:border-border/60 transition-all duration-200 text-left md:text-center cursor-pointer"
+                >
+                  {/* Step circle with icon */}
+                  <div className="relative z-10 shrink-0 md:mb-4">
+                    <div className="w-12 h-12 rounded-full bg-background border-2 border-border group-hover:border-primary/50 flex items-center justify-center shadow-sm transition-colors duration-200">
+                      <Icon
+                        size={22}
+                        className="text-muted-foreground group-hover:text-primary transition-colors duration-200"
+                      />
+                    </div>
+                    {/* Mobile only: step number badge */}
+                    <span className="md:hidden absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary/10 text-primary text-[10px] font-bold flex items-center justify-center">
+                      {i + 1}
+                    </span>
+                  </div>
+
+                  {/* Text content */}
+                  <div className="flex-1 min-w-0">
+                    {/* Stage label */}
+                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/60 mb-1.5">
+                      <span className="hidden md:inline">Stage {i + 1} · </span>{stage.myth}
+                    </p>
+
+                    {/* Title */}
+                    <p className="text-base font-bold text-foreground group-hover:text-primary transition-colors duration-200 leading-snug mb-2">
+                      {stage.title}
+                    </p>
+
+                    {/* Preview — clamp to 3 lines */}
+                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-3">
+                      {stage.preview}
+                    </p>
+
+                    {/* CTA */}
+                    <span className="inline-flex items-center gap-0.5 text-xs font-semibold text-primary/60 group-hover:text-primary transition-colors duration-200">
+                      Explore <ChevronRight size={13} className="translate-x-0 group-hover:translate-x-0.5 transition-transform duration-200" />
+                    </span>
+                  </div>
+                </motion.button>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );
