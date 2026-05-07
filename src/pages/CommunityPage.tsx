@@ -372,7 +372,7 @@ const CommunityPage = () => {
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
               >
-                <div className="pb-4 text-sm text-muted-foreground space-y-2">
+                <div className="pb-4 text-base text-muted-foreground space-y-2">
                   <p>
                     🤍 <strong>Be kind and respectful.</strong> Everyone here is
                     navigating their own journey.
@@ -560,7 +560,7 @@ const CommunityPage = () => {
               <p className="text-muted-foreground text-lg">
                 No discussions in this category yet.
               </p>
-              <p className="text-sm text-muted-foreground mt-1">
+              <p className="text-base text-muted-foreground mt-1">
                 Be the first to start a conversation!
               </p>
             </div>
@@ -718,7 +718,7 @@ const CommunityPage = () => {
                                     {timeAgo(reply.timestamp)}
                                   </span>
                                 </div>
-                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                <p className="text-base text-muted-foreground leading-relaxed">
                                   {reply.content}
                                 </p>
                                 <button

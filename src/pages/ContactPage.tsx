@@ -174,19 +174,19 @@ const ContactPage = () => {
                 <div className="grid sm:grid-cols-2 gap-5 mb-8">
                   <div>
                     <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Address</p>
-                    <p className="text-sm text-foreground">179 N. Broad Street<br />Norwich, NY 13815</p>
+                    <p className="text-base text-foreground">179 N. Broad Street<br />Norwich, NY 13815</p>
                   </div>
                   <div>
                     <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Hours</p>
-                    <p className="text-sm text-foreground">Open 24 Hours<br />Emergency Services Available</p>
+                    <p className="text-base text-foreground">Open 24 Hours<br />Emergency Services Available</p>
                   </div>
                   <div>
                     <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Phone</p>
-                    <p className="text-sm text-foreground font-semibold">(607) 337-4111</p>
+                    <p className="text-base text-foreground font-semibold">(607) 337-4111</p>
                   </div>
                   <div>
                     <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Email</p>
-                    <p className="text-sm text-foreground">info@uhs.org</p>
+                    <p className="text-base text-foreground">info@uhs.org</p>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 mt-auto">
@@ -215,7 +215,7 @@ const ContactPage = () => {
                   <h4 className="text-sm font-bold text-foreground mb-3 pb-2 border-b border-border">Maternity</h4>
                   <ul className="space-y-2">
                     {maternityServices.map((s) => (
-                      <li key={s} className="flex items-start gap-2 text-sm text-foreground">
+                      <li key={s} className="flex items-start gap-2 text-base text-foreground">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
                         {s}
                       </li>
@@ -261,7 +261,7 @@ const ContactPage = () => {
               </div>
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground">UHS Women's Health Center</h2>
-                <p className="text-muted-foreground text-sm mt-1">Obstetrics, Gynecology &amp; Midwifery — Norwich, NY</p>
+                <p className="text-muted-foreground text-base mt-1">Obstetrics, Gynecology &amp; Midwifery — Norwich, NY</p>
               </div>
             </div>
 
@@ -282,7 +282,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Address</p>
-                      <p className="text-sm text-foreground font-medium">32 Conkey Avenue<br />Norwich, NY 13815</p>
+                      <p className="text-base text-foreground font-medium">32 Conkey Avenue<br />Norwich, NY 13815</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -291,7 +291,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Phone</p>
-                      <a href="tel:6073374218" className="text-sm font-semibold text-foreground hover:text-primary transition-colors">(607) 337-4218</a>
+                      <a href="tel:6073374218" className="text-base font-semibold text-foreground hover:text-primary transition-colors">(607) 337-4218</a>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -300,7 +300,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Hours</p>
-                      <p className="text-sm text-foreground font-medium">
+                      <p className="text-base text-foreground font-medium">
                         Monday – Friday: 8:00 AM – 5:00 PM<br />
                         <span className="text-muted-foreground font-normal">Saturday &amp; Sunday: Closed</span>
                       </p>
@@ -335,7 +335,7 @@ const ContactPage = () => {
                     </span>
                   ))}
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   The Women's Health Center offers comprehensive OB/GYN and midwifery services. All providers can be reached at the main clinic number above.
                 </p>
                 <p className="text-xs text-muted-foreground">
@@ -378,7 +378,7 @@ const ContactPage = () => {
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-foreground">Local Resources</h2>
             </div>
-            <p className="text-muted-foreground text-sm mb-8 ml-[52px]">
+            <p className="text-muted-foreground text-base mb-8 ml-[52px]">
               Community organizations in the Chenango County area supporting maternal and family health.
             </p>
 
@@ -397,9 +397,9 @@ const ContactPage = () => {
                     <div className="flex items-start justify-between gap-2">
                       <h3 className="text-sm font-bold text-foreground leading-snug">{r.name}</h3>
                     </div>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{r.description}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{r.description}</p>
 
-                    <div className="space-y-1.5 text-xs text-muted-foreground">
+                    <div className="space-y-1.5 text-sm text-muted-foreground">
                       <p className="flex items-start gap-1.5">
                         <MapPin size={11} className="shrink-0 mt-0.5" />
                         <span>{r.address}</span>

@@ -14,7 +14,7 @@ const SiteFooter = () => {
               <img src={uhsLogo} alt="UHS Logo" className="h-6 w-auto" />
               <span className="font-medium text-sm text-foreground">Maternal Health at CMH</span>
             </div>
-            <p className="text-xs text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               Your trusted maternal health resource — expert guidance, real
               stories, and community support for every stage of your journey.
             </p>
@@ -55,7 +55,7 @@ const SiteFooter = () => {
             <a href="#" className="text-xs text-muted-foreground hover:text-primary transition-colors">Terms of Use</a>
             <a href="#" className="text-xs text-muted-foreground hover:text-primary transition-colors">Accessibility</a>
           </div>
-          <p className="text-xs text-muted-foreground text-center">
+          <p className="text-sm text-muted-foreground text-center">
             This website is for informational purposes only and does not constitute medical advice. Always consult your healthcare provider.
           </p>
         </div>

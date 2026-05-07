@@ -234,7 +234,7 @@ const SupportResourcesPage = () => {
                     </span>
                   )}
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-base text-muted-foreground leading-relaxed">
                   {hotline.description}
                 </p>
               </motion.a>
@@ -274,7 +274,7 @@ const SupportResourcesPage = () => {
                 <h3 className="font-bold text-foreground group-hover:text-primary transition-colors mb-2">
                   {org.name}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed flex-grow">
+                <p className="text-base text-muted-foreground leading-relaxed flex-grow">
                   {org.description}
                 </p>
                 <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary mt-3">
@@ -297,7 +297,7 @@ const SupportResourcesPage = () => {
               <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Self-Advocacy in Medical Settings
               </h2>
-              <p className="text-muted-foreground text-sm mt-1">
+              <p className="text-muted-foreground text-base mt-1">
                 Practical tips for making sure your voice is heard.
               </p>
             </div>
@@ -321,7 +321,7 @@ const SupportResourcesPage = () => {
                 <h4 className="font-semibold text-foreground mb-2">
                   {tip.title}
                 </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-base text-muted-foreground leading-relaxed">
                   {tip.description}
                 </p>
               </motion.div>
@@ -347,7 +347,7 @@ const SupportResourcesPage = () => {
               <h4 className="font-semibold text-foreground mb-2">
                 Medicaid Coverage for Pregnant Women
               </h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Medicaid provides coverage for prenatal care, labor and delivery,
                 and postpartum care. Many states have expanded coverage to 12
                 months postpartum under the American Rescue Plan. Contact your
@@ -368,7 +368,7 @@ const SupportResourcesPage = () => {
               <h4 className="font-semibold text-foreground mb-2">
                 The Affordable Care Act & Maternity Care
               </h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Under the ACA, maternity and newborn care is one of the ten
                 essential health benefits. This means most marketplace plans must
                 cover prenatal visits, labor, delivery, and postpartum care
@@ -380,7 +380,7 @@ const SupportResourcesPage = () => {
               <h4 className="font-semibold text-foreground mb-2">
                 Your Right to Informed Consent
               </h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 You have the right to receive clear information about any
                 procedure, its risks and benefits, and alternatives before
                 consenting. This applies to all stages of care, including during
@@ -425,7 +425,7 @@ const SupportResourcesPage = () => {
                 <h4 className="font-bold text-foreground mt-1 mb-2 group-hover:text-primary transition-colors">
                   {app.name}
                 </h4>
-                <p className="text-xs text-muted-foreground leading-relaxed flex-1">
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">
                   {app.description}
                 </p>
                 <div className="flex items-center gap-1 mt-3 text-xs font-semibold text-primary">
@@ -448,7 +448,7 @@ const SupportResourcesPage = () => {
               <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Maternity Logistics
               </h2>
-              <p className="text-muted-foreground text-sm mt-1">
+              <p className="text-muted-foreground text-base mt-1">
                 Insurance, leave, and transportation — the practical side of pregnancy.
               </p>
             </div>
@@ -469,10 +469,10 @@ const SupportResourcesPage = () => {
                 </div>
                 <h3 className="text-lg font-bold text-foreground">Insurance, Coverage & Maternity Leave</h3>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Contact your insurer early to understand the difference between preventive prenatal care coverages and hospital delivery fees. Adding a newborn to your plan is typically required within <strong>30–60 days of birth</strong> depending on your insurer — missing this window can leave your baby uninsured. Confirm your plan's exact deadline before your due date.
               </p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 The <strong>Family and Medical Leave Act (FMLA)</strong> protects your job for up to 12 unpaid weeks. Check whether your state offers paid family leave or short-term disability. File FMLA paperwork early in your third trimester to avoid last-minute stress.
               </p>
               <a
@@ -499,10 +499,10 @@ const SupportResourcesPage = () => {
                 </div>
                 <h3 className="text-lg font-bold text-foreground">Transportation & Appointment Planning</h3>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 A low-risk pregnancy typically involves around <strong>15 clinical visits</strong>. Batching blood draws directly after standard appointments can minimize disruption to your schedule.
               </p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 UHS CMH offers a dedicated <strong>Maternity Transit shuttle</strong> synchronized with Chenango Memorial Hospital routes. Routes run regularly and the fare is just $1 — so you never have to worry about missing an appointment due to transportation.
               </p>
               <a

@@ -89,7 +89,7 @@ const TransitLogisticsPage = () => {
                 </div>
                 <p className="text-base font-semibold text-foreground mb-1">Monday – Friday</p>
                 <p className="text-2xl font-bold text-primary mb-2">6:00 AM – 6:00 PM</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   Hours vary by route — check the individual route schedule for exact pickup times on your route.
                 </p>
                 <div className="mt-4 pt-4 border-t border-border">
@@ -105,7 +105,7 @@ const TransitLogisticsPage = () => {
                 </div>
                 <ul className="space-y-1.5">
                   {holidays.map((h) => (
-                    <li key={h} className="flex items-center gap-2 text-sm text-amber-900 dark:text-amber-300">
+                    <li key={h} className="flex items-center gap-2 text-base text-amber-900 dark:text-amber-300">
                       <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
                       {h}
                     </li>
@@ -164,7 +164,7 @@ const TransitLogisticsPage = () => {
                   </div>
                 </div>
 
-                <div className="bg-secondary/50 rounded-lg p-4 text-sm text-muted-foreground mb-5">
+                <div className="bg-secondary/50 rounded-lg p-4 text-base text-muted-foreground mb-5">
                   <p className="font-medium text-foreground mb-1">Rider Rules</p>
                   <p>Exact change only &nbsp;·&nbsp; Children under 5 ride free &nbsp;·&nbsp; ADA accessible</p>
                   <p className="mt-1">Call <a href="tel:607-367-1999" className="text-primary font-semibold hover:underline">607-367-1999</a> one day in advance for route deviations.</p>
@@ -216,7 +216,7 @@ const TransitLogisticsPage = () => {
                     <div className="flex items-center gap-3">
                       <span className="text-xl shrink-0">🚐</span>
                       <div>
-                        <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{route.label}</p>
+                        <p className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">{route.label}</p>
                         <p className="text-xs text-muted-foreground mt-0.5 flex items-center gap-1">
                           <Clock size={11} /> {route.hours}
                         </p>

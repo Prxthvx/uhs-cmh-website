@@ -166,7 +166,7 @@ const VideoViewPage = () => {
                   <h3 className="font-bold text-foreground mb-3 text-sm uppercase tracking-wider">
                     Viewer Feedback
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  <p className="text-base text-muted-foreground leading-relaxed mb-4">
                     Share your thoughts on this story. Your feedback helps us
                     create content that matters.
                   </p>
@@ -180,7 +180,7 @@ const VideoViewPage = () => {
                   <h3 className="font-bold text-foreground mb-3 text-sm uppercase tracking-wider">
                     Story Questions
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-base text-muted-foreground leading-relaxed">
                     Have questions for the person in this story? Submit them
                     here and we may include answers in a follow-up.
                   </p>
@@ -231,7 +231,7 @@ const VideoViewPage = () => {
                       ))}
                     </div>
                   ) : (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-base text-muted-foreground">
                       More stories in this category coming soon.
                     </p>
                   )}
