@@ -21,6 +21,16 @@
   <meta name="twitter:title" content="Chenango Maternal Health Portal">
   <meta property="og:description" content="Chenango Maternal Health Portal is a QR-accessible digital resource designed to provide mothers and caregivers with clear, reliable, and easy-to-understand heal">
   <meta name="twitter:description" content="Chenango Maternal Health Portal is a QR-accessible digital resource designed to provide mothers and caregivers with clear, reliable, and easy-to-understand heal">
+  <!-- GitHub Pages SPA redirect: restore path encoded by 404.html -->
+  <script>
+    (function() {
+      var redirect = sessionStorage.getItem('spa-redirect');
+      if (redirect) {
+        sessionStorage.removeItem('spa-redirect');
+        window.history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
 </head>
 
   <body>
